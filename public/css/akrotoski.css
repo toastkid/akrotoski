@@ -1,0 +1,64 @@
+.flickr_pic {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  background: #eee;
+}
+
+.flickr_pic img {
+  width: 300px;
+}
+
+/* flickr styles */
+
+#flickr_badge_uber_wrapper {
+  width:100%;
+}
+
+.flickr_badge_image img {
+  border: 1px solid black;
+}
+
+#flickr_badge_uber_wrapper a:hover,
+#flickr_badge_uber_wrapper a:link,
+#flickr_badge_uber_wrapper a:active,
+#flickr_badge_uber_wrapper a:visited {
+  float: left;
+  margin: 2px;
+}
+
+/* ***** */
+
+/*#sidebar ul {*/
+/*  border-bottom:1px solid #363430;*/
+/*  border-top:1px solid #363430;*/
+/*  margin:0 0 10px;*/
+/*  padding:0;*/
+/*}*/
+
+/*ul {*/
+/*  list-style-image:none;*/
+/*  list-style-position:outside;*/
+/*  list-style-type:none;*/
+/*}*/
+
+/*#sidebar li {*/
+/*/*  background:#22201D none repeat scroll 0 0;*/*/
+/*  display:block;*/
+/*  margin:1px 0;*/
+/*  padding:4px 10px;*/
+/*  font-size: 0.8em;  */
+/*  font-weight: normal;*/
+/*  color: #555;*/
+/*}*/
+
+/*#sidebar li a{*/
+/*  color: #222;*/
+/*  font-weight:normal;*/
+/*}*/
+
+/*#sidebar li a:hover{*/
+/*  color: #000;*/
+/*  font-weight:normal;*/
+/*}*/
+

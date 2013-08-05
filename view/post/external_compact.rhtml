@@ -1,0 +1,25 @@
+<div id="external_post-<%= @external_post.id || 0 %>" class="post external_post hentry post-compact <%= @external_post.tags.collect{|tag| tag.name}.join(' ') %>">
+  <div class="hd">
+    <h2 class="entry-title">
+      <a href="<%== @external_post.url %>" rel="bookmark"
+          title="Permalink for this post">
+        <%== @external_post.title %>
+      </a>
+    </h2>
+
+    <span class="date robots-nocontent">
+      <abbr class="published" title="<%= @external_post.created_at.xmlschema %>">
+        <% if @external_post.source == "guardian" %>
+          Originally published on <a href="<%= @external_post.url %>" title="Continue reading">The Guardian website</a> on
+        <% end %>
+        <%= @external_post.created_at.strftime("%H:%M:%S %A %b %d %Y") %>
+      </abbr>
+    </span>
+  </div>
+
+  <div class="bd entry-content">
+    <%= @external_post.body_rendered %>
+    <p>Read More on <a href="<%= @external_post.url %>" title="Continue reading"><%= @external_post.source_name %></a></p>    
+  </div>
+
+</div>

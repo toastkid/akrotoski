@@ -1,0 +1,42 @@
+
+<% if @tag.blank? %>
+  <h2>There are no posts tagged with '<%= @name %>'.</h2>
+<% else %>
+  <h1><%== @tag.title %></h1>
+  <div class="search">
+
+    <% sticky_count =(@sticky.blank? ? 0 : 1) %>
+    <% if @sticky %>
+      <ul class="sticky">
+        <li>
+          <%= render_template('../post/sticky', :post => @sticky) %>
+        </li>     
+      </ul>
+    <% end %>      
+
+    <ul>
+      <% @posts.each do |post| %>
+        <li>
+          <% if post.is_a?(Thoth::ExternalPost) %>
+            <%= render_template('../post/external_compact', :external_post => post) %>
+          <% else %>
+            <%= render_template('../post/compact', :post => post) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    
+    <p class="robots-nocontent">
+      Displaying posts
+      <strong><%== @pager.current_page_record_range.first %></strong> -
+      <strong><%== @pager.current_page_record_range.last + sticky_count %></strong> of
+      <strong><%== @pager.record_count + sticky_count %></strong>
+    </p>
+    <%=
+    render_template('../util/pager',
+        :prev_text => '&laquo; Newer',
+        :next_text => 'Older &raquo;')
+    %>
+
+  </div>
+<% end %>

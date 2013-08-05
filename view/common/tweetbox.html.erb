@@ -1,0 +1,12 @@
+
+	<ul>
+		<li><h3><a href="http://twitter.com/aleksk">Recent Tweets</a></h3>
+			<ul>
+			  <% ldb "about to get tweets" %>
+        <% Thoth::Plugin::Twitter.recent_tweets('aleksk').each do |tweet| %>
+          <% ldb "tweet = #{tweet.inspect}" %>
+          <li><%= Thoth::Plugin::Twitter.parse_tweet(tweet[:text]) %></li>
+        <% end %>
+			</ul>
+		</li>
+	</ul>

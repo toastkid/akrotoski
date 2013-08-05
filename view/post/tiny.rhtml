@@ -1,0 +1,29 @@
+<div id="post-<%= @post.id || 0 %>" class="post hentry post-tiny <%= tag.main_ancestor.name %>">
+  <% if defined?(tag) %>
+    <p class="sectiontitle"><a href="<%== tag.url %>"><strong><%= tag.title %></strong></a></p>
+  <% end %>
+  <div class="hd">
+    <h2 class="entry-title">
+      <a href="<%== @post.url %>" rel="bookmark"
+          title="Permalink for this post">
+        <%== @post.title %>
+      </a>
+    </h2>
+
+    <span class="date robots-nocontent">
+      <abbr class="published" title="<%= @post.created_at.xmlschema %>">
+        <%= @post.created_at(Thoth::Config.timestamp.long) %>
+      </abbr>
+    </span>
+  </div>
+  
+  <div class="bd entry-content">
+    <%= @post.to_fold %>
+    <% if @post.to_fold.length < @post.body_rendered.length %>
+      <p class=""><a href="<%= @post.url %>" title="Read the full article '<%= @post.title %>'">Read More</a></p>    
+    <% end %>    
+  </div>  
+  
+  <%= render_template("#{Thoth::HOME_DIR}/view/post/comments_link.rhtml", :post => @post) %>      
+
+</div>

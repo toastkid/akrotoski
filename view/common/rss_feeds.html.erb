@@ -1,0 +1,21 @@
+
+	<ul>  
+	
+		<li>
+		  <h3>
+        <a href="http://feeds.feedburner.com/AleksKrotoski" title="Subscribe" rel="alternate" type="application/rss+xml">Subscribe</a>
+      </h3>
+		  <ul>
+        <% if @feeds %>
+          <% @feeds.each do |feed| %>
+            <li>
+              <a href="<%== feed[:href] %>" rel="alternate" type="<%== feed[:type] %>">
+                <span class="icon feed"></span>
+                <%== feed[:title] %>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </li>
+	</ul>     

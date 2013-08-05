@@ -1,0 +1,53 @@
+<div id="comment-<%= @comment.id %>" class="comment">
+  <div class="hd">
+
+    <% if auth_key_valid? && !@comment.new? %>
+      <div class="toolbar mini">
+        <ul>
+          <li>
+            <a href="<%= R(Thoth::CommentController, :delete, @comment.id) %>"
+                title="Delete this comment">
+              <span class="adminicon comment-delete"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="bd">
+    <%= @comment.body_rendered %>
+  </div>
+
+  <div class="ft">
+    <% if Thoth::Config.theme.gravatar.enabled && @comment.gravatar_url %>
+      <a class="gravatar" href="http://www.gravatar.com/" rel="nofollow"><img
+          src="<%== @comment.gravatar_url %>" alt="Gravatar icon" /></a>
+    <% end %>
+    <div class="author">
+      <% if @comment.author_url.empty? %>
+        <%== @comment.author %>
+      <% else %>
+        <a href="<%== @comment.author_url %>" rel="nofollow">
+          <%== @comment.author %>
+        </a>
+      <% end %>
+    </div>
+    <div class="date robots-nocontent">
+      <%= @comment.created_at(Thoth::Config.timestamp.long) %>
+      <% if auth_key_valid? && !@comment.new? %>     
+        <% if @comment.reported_as_spam %>
+          <a href="<%= R(Thoth::CommentController, :report_as_not_spam, @comment.id) %>"
+              title="Mark this comment as not being spam" class="spamlink">
+            <span class="comment-not-spam">Unspam</span>
+          </a>            
+        <% else %> 
+          <a href="<%= R(Thoth::CommentController, :report_as_spam, @comment.id) %>"
+              title="Mark this comment as spam" class="spamlink">
+            <span class="comment-spam">Report Spam</span>
+          </a>    
+        <% end %>
+      <% end %>  
+    </div>
+  </div>
+</div>

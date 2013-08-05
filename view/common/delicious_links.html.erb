@@ -1,0 +1,13 @@
+
+<% bookmarks = Thoth::Plugin::Delicious.recent_bookmarks "socialsimulation", :count => 10 %>
+
+	<ul>
+		<li><h3><a href="" title="Aleks' Delicious page">Delicious Links</a></h3>
+			<ul>
+        <% bookmarks.each do |bookmark| %>
+          <li><a href="<%= bookmark[:url]%>"><%= bookmark[:desc] %></a></li>
+        <% end %>
+			</ul>
+		</li>
+	</ul>
+

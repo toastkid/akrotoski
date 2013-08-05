@@ -1,0 +1,20 @@
+
+  # Redirect plugin for Thoth
+  #
+  # Create a redirects.yml file in the root of your Thoth blog
+  # and put the redirects you want in there, e.g.
+  #
+  #  ---
+  #    /foo: /bar
+  #    /some/thing: /some/thing.pdf
+  #    # can use ramaze regex too: http://wiki.ramaze.net/Walkthrough#routing
+  #    ^/(\d+)\.te?xt$: /text/%d # maps e.g. /123.text or /56.text to /text/123 and /text/56 respectively
+  #
+  # You'll need to tell Thoth to start the plugin when it starts, so make sure you have a 
+  #   plugins ['redirect']
+  # directive in your thoth.conf  
+ 
+  #note - where you have urls with the same first part, use ^ and $ to make sure it pulls the whole thing in.
+  #otherwise, /academic/phd is treated as /academic (regardless of the ordering in this file)
+  
+  ^/media$:                  /media_files

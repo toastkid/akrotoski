@@ -1,0 +1,39 @@
+<h2>Comments</h2>
+
+<%= render_template('../util/pager') %>
+
+<table class="list comments" summary="List of all comments">
+  <%= render_template('../util/table_sortheader') %>
+  <tfoot></tfoot>
+  <tbody>
+    <% row = 'even' %>
+    <% @comments.all do |comment| %>
+      <tr class="<%= row == 'even' ? row = 'odd' : row = 'even' %>">
+        <td class="id"><%= comment.id %></td>
+        <td class="title"><%= comment.post.title if comment.post%></td>
+        <td class="author">
+          <% if comment.author_url && !comment.author_url.empty? %>
+            <a href="<%== comment.author_url %>" rel="nofollow">
+              <%== comment.author %>
+            </a>
+          <% else %>
+            <%== comment.author %>
+          <% end %>
+        </td>
+        <td class="created">
+          <%= comment.created_at(Thoth::Config.timestamp.short) %>
+        </td>
+      </tr>
+    <% end %>
+
+    <% if @pager.record_count == 0 %>
+      <tr class="empty">
+        <td colspan="4">
+          No comments to display.
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render_template('../util/pager') %>

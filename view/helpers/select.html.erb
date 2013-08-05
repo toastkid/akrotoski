@@ -1,0 +1,10 @@
+
+  <% att_string = "" %>
+  <% attributes.each_pair{|k,v| att_string += " #{k}='#{v}'"} %>
+  <select <%= att_string %>>
+    <% options.each do |subarr| %>
+      <% value = subarr[1] || subarr[0] %>
+      <% string = subarr[0] %>
+      <option value="<%= value %>"><%= string %></option>
+    <% end %>
+  </select>

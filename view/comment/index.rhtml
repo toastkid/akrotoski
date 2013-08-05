@@ -1,0 +1,61 @@
+
+<% unless @today.empty? %>
+  <h3>Today's Comments</h3>
+
+  <ul class="comments today">
+    <% @today.each do |comment| %>
+      <li>
+        <a href="<%== comment.url %>"><%== comment.body %></a>
+        <div class="meta">
+          <span class="author">by
+            <% if comment.author_url.empty? %>
+              <%== comment.author %>
+            <% else %>
+              <a href="<%== comment.author_url %>" rel="nofollow">
+                <%== comment.author %>
+              </a>
+            <% end %>
+          </span>
+          <% if post = comment.post %>
+            <span class="on">
+              on <a href="<%== post.url %>"><%== post.title %></a>
+            </span>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @ancient.empty? %>
+  <h3>Ancient History</h3>
+
+  <ul class="comments ancient">
+    <% @ancient.each do |comment| %>
+      <li>
+        <a href="<%== comment.url %>"><%== comment.body %></a>
+        <div class="meta">
+          <span class="author">by
+            <% if comment.author_url.empty? %>
+              <%== comment.author %>
+            <% else %>
+              <a href="<%== comment.author_url %>" rel="nofollow">
+                <%== comment.author %>
+              </a>
+            <% end %>
+          </span>
+          <% if post = comment.post %>
+            <span class="on">
+              on <a href="<%== post.url %>"><%== post.title %></a>
+            </span>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @today.empty? && @ancient.empty? %>
+  <h3>Recent Comments</h3>
+  <p>It's been pretty quiet around here.</p>
+<% end %>

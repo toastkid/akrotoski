@@ -1,0 +1,37 @@
+<!-- first row: media academic bio -->
+<div class="row">
+  <%= render_template "tag/section", :tag_name => "media" %>     
+  <%= render_template "tag/section", :tag_name => "academic" %>  
+
+  <%= render_template "common/search_form" %>                      
+  <div class="col span1 bio last autofold" id="bio">
+    <%= render_template "common/bio" %>              
+  </div>
+
+</div><!-- /row -->
+
+<!-- second row: cult-of-me lifestream tweets -->
+<div class="row">
+  <%= render_template "tag/section", :tag_name => "uttw" %>     
+  <%= render_template "tag/section", :tag_name => "lifestream" %>                         
+
+  <div class="col span1 twitter last contenttype1">
+    <p class="sectiontitle"><strong>Tweets</strong></p>
+    <%= render_template('common/tweetbox') %>              
+  </div>
+</div><!-- /row -->
+
+<!-- techweekly (two cols) comments -->
+<div class="row">
+  <div class="col span1 techweekly">
+    <%= @homepage_bottom_post.body_rendered if @homepage_bottom_post %>
+  </div>
+  
+  <%= render_template "tag/section", :tag_name => "audio-video" %>       
+  
+  <div class="col span1 comments last contenttype1">
+    <p class="sectiontitle"><strong>Comments</strong></p>    
+      <%= render_template('common/recent_comments_homepage') %>   
+  </div>  
+  
+</div><!-- /row -->

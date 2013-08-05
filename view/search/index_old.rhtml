@@ -1,0 +1,45 @@
+<h2>Search Results</h2>
+
+<div class="search">
+  <% unless @error.nil? %>
+    <p><%== @error %></p>
+  <% end %>
+
+  <% if @data[:results].empty? %>
+    <p>There were no results for the query <strong><%== @query %></strong></p>
+  <% else %>
+    <p class="robots-nocontent">
+      Results
+      <strong><%== @data[:start] %></strong> -
+      <strong><%== @data[:end] %></strong> of about
+      <strong><%== @data[:available] %></strong> for
+      <strong><%== @query %></strong>
+    </p>
+
+    <%=
+    render_template('../util/simple_pager',
+        :prev_text => '&laquo; Prev',
+        :next_text => 'Next &raquo;')
+    %>
+
+    <ul>
+      <% @data[:results].each do |result| %>
+        <li>
+          <h4><a href="<%= result[:url] %>"><%= result[:title] %></a></h4>
+          <div class="summary"><%= result[:summary] %></div>
+          <span class="url"><%= result[:url].gsub(/https?:\/\//i, '') %></span>
+        </li>
+      <% end %>
+    </ul>
+
+    <%=
+    render_template('../util/simple_pager',
+        :prev_text => '&laquo; Prev',
+        :next_text => 'Next &raquo;')
+    %>
+
+    <p class="plug">
+      Powered by <a href="http://search.yahoo.com/">Yahoo! Search</a>
+    </p>
+  <% end %>
+</div>

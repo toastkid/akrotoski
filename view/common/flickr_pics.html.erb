@@ -1,0 +1,6 @@
+<div class="flickr_pics">
+  <h2>Photos for <%= username %></h2>
+  <% Thoth::Plugin::Flickr.recent_photos(username).each do |photo| %>
+    <%= render_template('../common/flickr_pic', :photo => photo) %>
+  <% end %>
+</div>

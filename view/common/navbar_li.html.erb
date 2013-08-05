@@ -1,0 +1,5 @@
+  <% active = false unless defined?(active) %>
+  
+  <li class="link<%= tag.name %>">
+    <a href="/tag/<%= tag.name %>" class="<%= 'active' if active %>"><%= tag.title %></a>
+  </li>

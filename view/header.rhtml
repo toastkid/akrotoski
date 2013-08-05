@@ -1,0 +1,10 @@
+<div id="hd">
+  <h1>
+    <a href="<%= R(Thoth::MainController) %>" rel="home">
+      <%== Thoth::Config.site.name %>
+    </a>
+  </h1>
+
+  <%= render_template 'common/navbar' %> 
+  <%= render_template 'admin/toolbar' %>
+</div>

@@ -1,0 +1,25 @@
+  <div id="toolbar" class="bar">
+    <ul class="robots-nocontent">
+      <li><%= A('Home',     :href => R(Thoth::MainController), :rel => 'home') %></li>
+      <li><%= A('Archives', :href => R(Thoth::MainController, :archive, 2)) %></li>
+      <% if Thoth::Config.site.enable_comments %>
+        <li><%= A('Comments', :href => R(Thoth::CommentController)) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+<div id="ft">
+  Copyright &copy; <%= Time.now.year %>
+
+  <% if Thoth::Config.admin.email.empty? %>
+    <%== Thoth::Config.admin.name %>.
+  <% else %>
+    <a href="mailto:<%== Thoth::Config.admin.email %>">
+      <%== Thoth::Config.admin.name %></a>.
+  <% end %>
+
+  All rights reserved.
+
+  <br />
+  Powered by <a href="http://thothblog.org/">Thoth</a>. Designed by <a href="http://www.picturesandwriting.com/">Shaun Morrison</a> and built by <a href="http://www.linkedin.com/profile/view?id=49939132&locale=en_US&trk=tab_pro">Max Williams</a>.
+</div>

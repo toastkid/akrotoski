@@ -1,0 +1,9 @@
+<h2><a href="<%= post.url %>"><%= post.title %></a></h2>
+<p class="meta"><%= post.created_at(Thoth::Config.timestamp.long) %></p>
+<% if post.respond_to?(:source_name) %>
+  <%= post.truncated %>
+  <p>Read More on <a href="<%=post.url %>" title="Continue reading"><%= post.source_name %></a></p>  
+<% else %>
+  <%= post.to_fold %>
+  <p class=""><a href="<%= post.url %>" title="Read the full article '<%= post.title %>'">Read More</a></p>
+<% end %>

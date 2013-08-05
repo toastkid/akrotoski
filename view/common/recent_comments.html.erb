@@ -1,0 +1,39 @@
+
+	<ul>
+		<li>
+		  <h3>Recent comments</h3>
+      <% Thoth::Comment.order(:created_at.desc).filter(:reported_as_spam => false).limit(5).all.each do |comment| %>
+        <ul>
+
+          <table style="font-size:0.9em"> 
+            <row>
+              <td>
+                <% if Thoth::Config.theme.gravatar.enabled && comment.gravatar_url %>
+                  <a class="gravatar" href="http://www.gravatar.com/" rel="nofollow"><img
+                      src="<%== comment.gravatar_url %>" alt="Gravatar icon" /></a>
+                <% end %>
+              </td>
+              <td>
+                <% if comment.author_url.empty? %>
+                  <%== comment.author %>
+                <% else %>
+                  <a href="<%== comment.author_url %>" rel="nofollow">
+                    <%== comment.author %>
+                  </a>
+                <% end %>
+                on
+                <% if post = comment.post %>
+                  <a href="<%== post.url %>" rel="bookmark" title="Permalink for this post">
+                    <%== post.title %>
+                  </a>    
+                <% end %>
+              </td>
+            </row>    
+          </table>
+
+        </ul>
+      <% end %>
+		</li>
+	</ul>      
+
+

@@ -1,0 +1,33 @@
+<h2>Search Results</h2>
+
+<div class="search">
+
+  <% if @record_count == 0 %>
+    <p>There were no results for the query <strong><%== @query %></strong></p>
+  <% else %>
+    <p>Found <%= @record_count %> posts matching '<%= @query %>'</p>
+    <ul>
+      <% @posts[0..9].each do |post| %>
+        <li>
+          <% if post.is_a?(Thoth::ExternalPost) %>
+            <%= render_template('../post/external_compact', :external_post => post) %>
+          <% else %>
+            <%= render_template('../post/compact', :post => post) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    
+    <p class="robots-nocontent">
+      Displaying posts
+      <strong><%== @pager.current_page_record_range.first %></strong> -
+      <strong><%== @pager.current_page_record_range.last %></strong> of
+      <strong><%== @pager.record_count %></strong>
+    </p>
+    <%=
+    render_template('../util/pager',
+        :prev_text => '&laquo; Newer',
+        :next_text => 'Older &raquo;')
+    %>
+  <% end %>
+</div>

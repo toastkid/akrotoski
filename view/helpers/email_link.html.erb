@@ -1,0 +1,9 @@
+
+<%  encoded_address = '' %>
+<%  email.each_byte{|c| encoded_address << sprintf("&#%d;", c) } %>
+<%  encoded_mailto = '' %>
+<%  "mailto:".each_byte{|c| encoded_mailto << sprintf("&#%d;", c) } %>
+
+<a href="<%= encoded_mailto %><%= encoded_address %>" <%= "title='#{title}'" if defined?(title) %>><%= encoded_address %></a>
+
+

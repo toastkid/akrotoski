@@ -1,0 +1,25 @@
+
+
+.rsslink a{
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="i/icons/rss.png", sizingMethod="crop");
+}
+
+#colsandcontent .sticky{
+	margin: 0;
+}
+
+.contactservices .twitter{
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images//icons/twitterbird.png", sizingMethod="crop");
+}
+
+.contactservices .facebook{
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images//icons/facebook.png", sizingMethod="crop");
+}
+
+.contactservices .linkedin{
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images//icons/linkedin.png", sizingMethod="crop");
+}

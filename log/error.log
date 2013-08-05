@@ -1,0 +1,35 @@
+[2012-01-15 13:34:12] ERROR  Mysql::Error Commands out of sync; you can't run this command now in: #<Action method=nil, params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/common/recent_comments_homepage.html.erb">
+[2012-01-15 13:34:12] ERROR  Mysql::Error Commands out of sync; you can't run this command now in: #<Action method="index", params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/index.rhtml">
+[2012-01-15 13:34:12] ERROR  #<Sequel::DatabaseError: Mysql::Error Commands out of sync; you can't run this command now>
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:182:in `query'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:182:in `_execute'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:141:in `execute'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/connection_pool.rb:102:in `hold'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/database.rb:361:in `synchronize'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:141:in `execute'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/dataset.rb:464:in `execute'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:368:in `execute'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/adapters/mysql.rb:318:in `fetch_rows'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/dataset.rb:454:in `_each'
+[2012-01-15 13:34:12] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/sequel-2.9.0/lib/sequel_core/dataset.rb:209:in `each'
+[2012-01-15 15:06:40] ERROR  No Action found for `/serendipity-engine' on Thoth::MainController
+[2012-02-02 18:40:35] ERROR  No Action found for `/tags/print' on Thoth::MainController
+[2012-04-25 18:20:54] ERROR  can't convert Sequel::SQL::Blob into Array in: #<Action method=nil, params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/post/summary.rhtml">
+[2012-04-25 18:20:54] ERROR  can't convert Sequel::SQL::Blob into Array in: #<Action method=nil, params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/tag/section_contents.rhtml">
+[2012-04-25 18:20:54] ERROR  can't convert Sequel::SQL::Blob into Array in: #<Action method=nil, params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/tag/section.rhtml">
+[2012-04-25 18:20:54] ERROR  can't convert Sequel::SQL::Blob into Array in: #<Action method="index", params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/index.rhtml">
+[2012-04-25 18:20:54] ERROR  #<TypeError: can't convert Sequel::SQL::Blob into Array>
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/model/external_post.rb:118:in `+'
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/model/external_post.rb:118:in `truncated'
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/post/summary.rhtml:4:in `scope'
+[2012-04-25 18:20:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/snippets/object/scope.rb:12:in `render_template'
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/tag/section_contents.rhtml:4:in `scope'
+[2012-04-25 18:20:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/snippets/object/scope.rb:12:in `render_template'
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/tag/section.rhtml:4:in `scope'
+[2012-04-25 18:20:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/snippets/object/scope.rb:12:in `render_template'
+[2012-04-25 18:20:54] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/index.rhtml:15:in `binding'
+[2012-04-25 18:20:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action.rb:109:in `binding'
+[2012-04-25 18:20:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action.rb:109:in `instance_eval'
+[2012-11-13 09:39:16] ERROR  Unable to connect to database: Unknown database 'akrotoski_development'
+[2012-11-13 10:08:18] ERROR  Unable to start Ramaze due to LoadError: no such file to load -- thin
+[2012-11-13 11:27:41] ERROR  Twitter failed to respond 3 times. Will retry after Tue Nov 13 11:37:41 +0000 2012.

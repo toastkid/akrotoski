@@ -1,0 +1,22 @@
+<div class="row">
+  <!-- first col: audio video -->
+  <div class="col span1 audio-video">
+    <div class="col span1 audio-video contenttype1">
+      <%= render_template "../tag/section_contents", :tag => @audio, :subfolder => true %> 
+    </div>
+    <div class="col span1 audio-video contenttype1">    
+      <%= render_template "../tag/section_contents", :tag => @video, :subfolder => true %>  
+    </div>         
+  </div>
+  
+  <div class="col span1 audio-video contenttype1">
+  <p class="sectiontitle"><a href="http://www.flickr.com/photos/toastkid/sets/72157624870380647" title="Head Shots (Free to use)"><strong>Press and publicity shots</strong></a></p>
+    <%= render_template "../common/flickr_badge_head_shots" %> 
+  </div>             
+  
+  <!-- third col: bio -->
+  <div class="col span1 bio last">
+    <%= render_template "../common/bio" %>              
+  </div>
+</div><!-- /row -->
+

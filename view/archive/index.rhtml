@@ -1,0 +1,24 @@
+<h2>Archived Posts</h2>
+
+<p class="robots-nocontent">
+  Displaying posts
+  <strong><%== @pager.current_page_record_range.first %></strong> -
+  <strong><%== @pager.current_page_record_range.last %></strong> of
+  <strong><%== @pager.record_count %></strong>
+</p>
+
+<%=
+render_template('../util/pager',
+    :prev_text => '&laquo; Newer',
+    :next_text => 'Older &raquo;')
+%>
+
+<% @posts.all do |post| %>
+  <%= render_template('../post/compact.rhtml', :post => post) %>
+<% end %>
+
+<%=
+render_template('../util/pager',
+    :prev_text => '&laquo; Newer',
+    :next_text => 'Older &raquo;')
+%>

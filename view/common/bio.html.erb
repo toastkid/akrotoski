@@ -1,0 +1,34 @@
+    <% ldb "@tag = #{@tag.inspect}" %>
+    <% if @tag && (post = @tag.bio_post) %>
+      <%= post.body_rendered %>
+    <% elsif post = Thoth::Post[:name => "aleks-bio-text"] %>
+      <%= post.body_rendered %>
+    <% else %>
+    <img src="/images/face/aleks-krotoski-hair-sml.png" alt=" " class="hairimg">
+       <h2>Dr. Aleks Krotoski</h2>
+         <p>is an <a 
+    href="http://alekskrotoski.com/tag/academic">academic</a> and <a 
+    href="http://alekskrotoski.com/tag/media">journalist</a> who writes 
+    about and studies technology and interactivity. She completed her <a 
+    href="http://174.143.232.215/tag/research">PhD thesis</a> in Social 
+    Psychology at the <a href="http://www2.surrey.ac.uk/">University of 
+    Surrey</a> at the end of 2009, examining how information spreads around 
+    the social networks of the World Wide Web.
+    <p>She is currently working on the 4-part, prime time <span class="caps">BBC</span>
+     2 series <a href="http://bbc.co.uk/digitalrevolution">Virtual 
+    Revolution</a>, about the social history of the World Wide Web, 
+    broadcasting at 8:30pm from Saturday 30 Januray 2010 (repeated Monday 
+    nights at 11pm). She blogs for the project <a 
+    href="http://www.bbc.co.uk/blogs/digitalrevolution/">here</a>.</p>
+    <p>Aleks also writes a column for<a href="http://www.guardian.co.uk/"> 
+    The Guardian</a> newspaper, and hosts <a 
+    href="http://174.143.232.215/tag/tech-weekly">Tech Weekly</a>, their 
+    technology podcast. She blogs on the <a 
+    href="http://www.guardian.co.uk/profile/alekskrotoski">Guardian 
+    Unlimited network</a>.</p>
+    <p>Finally, she’s the New Media Sector Champion for <a 
+    href="https://www.uktradeinvest.gov.uk/"><span class="caps">UKTI</span></a>,
+     the government department that promotes British businesses around the 
+    world.</p>
+    <p>You can find Aleks all over the Web.</p>
+    <% end %>

@@ -1,0 +1,33 @@
+
+<%= render_template 'layouts/head' %>   
+<body id="">   
+<!-- "layout" layout -->
+<p class="jumpto"><a href="#content" title="jump to page's content">Content</a> <a href="#sidebar" title="jump to page's sidebar">Sidebar</a></p>  
+  <div id="master" class='<%= "#{@main_ancestor}wrap" if @main_ancestor %>'>
+    <div id="master2">
+      <div id="master3">
+        <div id="master4">
+          <p class="sitename"><a href="/" title="home: overview of all work"><strong>Alekskrotoski.com</strong></a></p>
+          <div class="navsearch">
+          
+            <%= render_template 'common/navbar' %> 
+
+            <form id="searchwrap" action="<%= R(Thoth::SearchController) %>" method="get">
+              <label for="searchbox">Search</label>
+              <input type="text" id="search-query" name="q" maxlength="255" value="<%== request[:q] ? request[:q] : '' %>" />
+              <input type="submit" name="" value="Search" id="searchsubmit" class="but" />
+            </form>   
+    
+          </div><!-- /header-->   
+          
+          <div id="colsandcontent">
+            <div id="content">
+              <%= render_template 'admin/toolbar' %>
+              <%= @content %>
+            </div><!-- /content -->
+            
+            <div id="sidebar">
+              <%= render_template 'common/sidebar' %>
+            </div><!-- /sidebar -->
+          </div><!-- /colsandcontent -->
+        <%= render_template 'layouts/foot' %> 

@@ -1,0 +1,15 @@
+    <ul>
+      <% Thoth::Comment.recent(1,5).all.each do |comment| %>
+        <li style="background-image:url(<%== comment.gravatar_url %>);">
+          <a href="<%== comment.author_url %>" rel="nofollow">
+            <%== comment.author %>
+          </a>
+          on 
+          <% if post = comment.post %>
+            <a href="<%== post.url %>" rel="bookmark" title="Permalink for this post">
+              <%== post.title %>
+            </a> 
+          <% end %>
+        </li>     
+      <% end %>
+    </ul>

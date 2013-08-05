@@ -1,0 +1,29 @@
+<% if post = Thoth::Post[:name => "aleks-contact-text"] %>
+  <%= post.body_rendered %>
+<% else %>
+
+  <p class="contactservices">
+	  <a href="http://twitter.com/aleksk" title="See Aleks' Twitter page" class="twitter">Twitter</a>
+	  <a href="http://www.facebook.com/alekskrotoski" title="See Aleks' Facebook page" class="facebook">Facebook</a>
+	  <a href="http://www.linkedin.com/in/alekskrotoski" title="See Aleks' Linked In page" class="linkedin">Linked In</a>
+  </p>
+        
+  <p class="emailinfo"><%= render_template "../helpers/email_link", :email => "contact@alekskrotoski.com", :title => "ask me questions" %></p>
+	
+  <div class="contactinfo">
+	  <h3>Press &amp; Media Requests:</h3>
+	  <p>
+		  c/o Rosemary Scoular<br/>
+		  <a href="http://www.unitedagents.co.uk">unitedagents.co.uk</a><br/>
+		  12-26 Lexington Street,<br/>
+		  London, W1F 0LE
+	  </p>
+	  <p><abbr title="telephone number:">t.</abbr> +44 (0)20 3214 0800</p>
+	
+	  <h3>Aleks Krotoski</h3>
+	  <p>
+		  Technology section, The Guardian, Kings Place<br/>
+		  90 York Way, London, N1 9AG
+	  </p>
+  </div>    
+<% end %>

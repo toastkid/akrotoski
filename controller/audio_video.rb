@@ -1,0 +1,98 @@
+#--
+# Copyright (c) 2009 Ryan Grove <ryan@wonko.com>
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+#   * Redistributions of source code must retain the above copyright notice,
+#     this list of conditions and the following disclaimer.
+#   * Redistributions in binary form must reproduce the above copyright notice,
+#     this list of conditions and the following disclaimer in the documentation
+#     and/or other materials provided with the distribution.
+#   * Neither the name of this project nor the names of its contributors may be
+#     used to endorse or promote products derived from this software without
+#     specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#++
+
+module Thoth
+  class AudioVideoController < Ramaze::Controller
+    map       '/audio-video'
+    layout    '/layouts/home'
+    view_root File.join(Config.theme.view, 'audio_video'),
+              File.join(VIEW_DIR, 'audio_video')
+
+    helper      :admin, :cache, :error, :pagination
+    deny_layout :atom
+
+    if Config.server.enable_cache
+      cache :index, :ttl => 120, :key => lambda { auth_key_valid? }
+      cache :atom, :ttl => 120
+    end
+
+    def index
+      @audio = Tag[:name => "audio"]
+      @video = Tag[:name => "video"]
+    end
+
+    def atom(name = nil)
+      tag = Tag[:name => name.strip.downcase] if name
+      
+      if tag 
+        posts   = tag.posts.limit(10)
+      else
+        tag = Tag.root
+        posts   Post.limit(10)
+      end    
+      
+      updated = posts.count > 0 ? posts.first.created_at.xmlschema :
+          Time.at(0).xmlschema
+
+      response['Content-Type'] = 'application/atom+xml'
+
+      x = Builder::XmlMarkup.new(:indent => 2)
+      x.instruct!
+
+      x.feed(:xmlns => 'http://www.w3.org/2005/Atom') {
+        x.id       tag.url
+        x.title    "Posts tagged with \"#{tag.name}\" - #{Config.site.name}"
+        x.updated  updated
+        x.link     :href => tag.url
+        x.link     :href => tag.atom_url, :rel => 'self'
+
+        x.author {
+          x.name  Config.admin.name
+          x.email Config.admin.email
+          x.uri   Config.site.url
+        }
+
+        posts.all do |post|
+          x.entry {
+            x.id        post.url
+            x.title     post.title
+            x.published post.created_at.xmlschema
+            x.updated   post.updated_at.xmlschema
+            x.link      :href => post.url, :rel => 'alternate'
+            x.content   post.body_rendered, :type => 'html'
+
+            post.tags.each do |tag|
+              x.category :term => tag.name, :label => tag.name,
+                  :scheme => tag.url
+            end
+          }
+        end
+      }
+    end
+  end
+end

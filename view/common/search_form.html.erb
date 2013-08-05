@@ -1,0 +1,5 @@
+<form id="searchwrap" action="<%= R(Thoth::SearchController) %>" method="get">
+ <!-- <label for="searchbox">Search</label> -->
+  <input type="text" id="search-query" name="q" maxlength="255" value="<%== request[:q] ? request[:q] : '' %>" />
+  <input type="submit" name="" value="Search" id="searchsubmit" class="but" />
+</form>  

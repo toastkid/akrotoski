@@ -1,0 +1,24 @@
+
+<%= render_template 'layouts/head' %>   
+<body id="home">    
+<!-- "home" layout -->
+<p class="jumpto"><a href="#content" title="jump to page's content">Content</a> <a href="#sidebar" title="jump to page's sidebar">Sidebar</a></p>  
+  <div id="master" class='<%= "#{@main_ancestor}wrap" if @main_ancestor %>'>
+    <div id="master2">
+      <div id="master3">
+        <div id="master4">
+          <p class="sitename"><a href="/" title="home: overview of all work"><strong>Alekskrotoski.com</strong></a></p>
+          <div class="navsearch">
+          
+            <%= render_template 'common/navbar' %> 
+
+          </div><!-- /header-->    
+          <div id="colsandcontent">
+            <div id="content">
+              <%= render_template 'admin/toolbar' %>
+              <%= @content %>
+            </div><!-- /content -->
+            <div class="section bio">
+            </div>
+          </div><!-- /colsandcontent -->
+        <%= render_template 'layouts/foot' %> 
