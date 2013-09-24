@@ -33,3 +33,72 @@
 [2012-11-13 09:39:16] ERROR  Unable to connect to database: Unknown database 'akrotoski_development'
 [2012-11-13 10:08:18] ERROR  Unable to start Ramaze due to LoadError: no such file to load -- thin
 [2012-11-13 11:27:41] ERROR  Twitter failed to respond 3 times. Will retry after Tue Nov 13 11:37:41 +0000 2012.
+[2013-08-20 21:32:42] ERROR  No Action found for `/tags' on Thoth::MainController
+[2013-08-20 21:33:03] ERROR  Twitter failed to respond 3 times. Will retry after Tue Aug 20 21:43:03 +0100 2013.
+[2013-08-20 21:34:54] ERROR  wrong number of arguments (3 for 1) in: #<Action method="edit", params=["images", "face", "aleks-krotoski-tech-weekly-sml.jpg"] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/post/edit.rhtml">
+[2013-08-20 21:34:54] ERROR  #<ArgumentError: wrong number of arguments (3 for 1)>
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:63:in `edit'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:63:in `__send__'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:63:in `render_method'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:48:in `result_and_file'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:40:in `reaction_or_file'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template.rb:71:in `wrap_compile'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template/erubis.rb:26:in `transform'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action/render.rb:115:in `uncached_render'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action/render.rb:39:in `render'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action/render.rb:11:in `stack'
+[2013-08-20 21:34:54] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action/render.rb:28:in `render'
+[2013-08-20 21:47:36] ERROR  Twitter failed to respond 4 times. Will retry after Tue Aug 20 21:57:36 +0100 2013.
+[2013-09-24 13:50:07] ERROR  #<Errno::EADDRINUSE: Address already in use - bind(2)>
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `initialize'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `new'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `test_connection'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/timeout.rb:67:in `timeout'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:85:in `test_connection'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:54:in `start_adapter'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:28:in `startup'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:95:in `startup'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `each'
+[2013-09-24 13:50:07] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `startup'
+[2013-09-24 13:50:07] ERROR  ./thoth.rb:272:in `run'
+[2013-09-24 13:50:07] ERROR  Cannot open connection on 0.0.0.0:7000
+[2013-09-24 15:17:53] ERROR  no such file to load -- thoth_twitter in: #<Action method=nil, params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/common/tweetbox.html.erb">
+[2013-09-24 15:17:53] ERROR  no such file to load -- thoth_twitter in: #<Action method="index", params=[] template="/home/max/work/aleks/akrotoski_container/akrotoski/view/index.rhtml">
+[2013-09-24 15:17:53] ERROR  #<LoadError: no such file to load -- thoth_twitter>
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+[2013-09-24 15:17:53] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/plugin.rb:48:in `load'
+[2013-09-24 15:17:53] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/plugin.rb:36:in `const_missing'
+[2013-09-24 15:17:53] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/common/tweetbox.html.erb:6:in `scope'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/snippets/object/scope.rb:12:in `render_template'
+[2013-09-24 15:17:53] ERROR  /home/max/work/aleks/akrotoski_container/akrotoski/view/index.rhtml:20:in `binding'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action.rb:109:in `binding'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action.rb:109:in `instance_eval'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/action.rb:109:in `binding'
+[2013-09-24 15:17:53] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/template/erubis.rb:27:in `transform'
+[2013-09-24 15:49:47] ERROR  #<Errno::EADDRINUSE: Address already in use - bind(2)>
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `initialize'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `new'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `test_connection'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/timeout.rb:67:in `timeout'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:85:in `test_connection'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:54:in `start_adapter'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:28:in `startup'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:95:in `startup'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `each'
+[2013-09-24 15:49:47] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `startup'
+[2013-09-24 15:49:47] ERROR  ./thoth.rb:272:in `run'
+[2013-09-24 15:49:47] ERROR  Cannot open connection on 0.0.0.0:7000
+[2013-09-24 16:01:23] ERROR  #<Errno::EADDRINUSE: Address already in use - bind(2)>
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `initialize'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `new'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:86:in `test_connection'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/timeout.rb:67:in `timeout'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:85:in `test_connection'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:54:in `start_adapter'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze/adapter.rb:28:in `startup'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:95:in `startup'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `each'
+[2013-09-24 16:01:23] ERROR  /home/max/.rvm/gems/ruby-1.8.7-p302@thoth/gems/ramaze-2009.02/lib/ramaze.rb:94:in `startup'
+[2013-09-24 16:01:23] ERROR  ./thoth.rb:272:in `run'
+[2013-09-24 16:01:23] ERROR  Cannot open connection on 0.0.0.0:7000

@@ -54,34 +54,16 @@ module Thoth
 
         @ancestors = @tag.self_and_ancestors      
         @main_ancestor = @tag.main_ancestor.name   
-#        
-#        Ramaze::Log.info "page = #{page.inspect}, @posts.page_count = #{@posts.page_count.inspect}"        
-#        if page > @posts.page_count && @posts.page_count > 0
-#          page = @posts.page_count
-#          @posts = @tag.posts.paginate(page, 10)
-#        end
 
         page = page.to_i
         page = 1 unless page >= 1
-#        @posts = @tag.posts.paginate(page,10)
         @sticky = @tag.sticky_post
         @posts = @tag.posts_and_external_posts(:page => page, :non_sticky => true)
-#        ldb "@posts.size = #{@posts.size}"
         @page_count = @tag.posts_and_external_posts_page_count
         @record_count = @tag.posts_and_external_posts_count(:non_sticky => true)   
-#        ldb "@record_count = #{@record_count}"   
         @title = "Academic, Media, UKTI & Personal &mdash; #{@tag.title} Posts (page #{page} of #{@page_count})"
 
-#        @pager = pager(@posts, Rs(name, '%s'))
         @pager = array_pager(@posts, Rs(name, '%s'), {:page => page, :record_count => @record_count})
-#        Ramaze::Log.info "@pager = #{@pager.inspect}"        
-        
-#        %w(current_page current_page_record_count current_page_record_range  navigation? next_page next_url page_count page_range page_size prev_page prev_url record_count).each do |f| 
-#          puts "@pager.#{f} = #{@pager.send(f).inspect}"
-#          puts "@array_pager.#{f} = #{@array_pager.send(f).inspect}\n "
-#        end
-#        puts "@pager.url(2) = #{@pager.url(2).inspect}"
-#        puts "@array_pager.url(2) = #{@array_pager.url(2).inspect}"
         
         @feeds = [{
           :href  => @tag.atom_url,
@@ -90,6 +72,11 @@ module Thoth
         }]
       end
     end
+    
+    def admin
+      require_auth
+      @parent_tag = Tag[1] 
+    end    
 
     def atom(name = nil)
       tag = Tag[:name => name.strip.downcase] if name
@@ -139,5 +126,6 @@ module Thoth
         end
       }
     end
+    
   end
 end

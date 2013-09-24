@@ -27,6 +27,7 @@ gem "nokogiri"
 gem "not-naughty"
 gem "passenger"
 gem "ramaze", "2009.02"
+gem 'rb-readline'
 gem "RedCloth"
 gem "rubytree"
 gem "sanitize"

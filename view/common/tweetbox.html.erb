@@ -3,9 +3,9 @@
 		<li><h3><a href="http://twitter.com/aleksk">Recent Tweets</a></h3>
 			<ul>
 			  <% ldb "about to get tweets" %>
-        <% Thoth::Plugin::Twitter.recent_tweets('aleksk').each do |tweet| %>
+        <% Thoth::Plugin::TwitterClient.recent_tweets('aleksk', :count => 8).each do |tweet| %>
           <% ldb "tweet = #{tweet.inspect}" %>
-          <li><%= Thoth::Plugin::Twitter.parse_tweet(tweet[:text]) %></li>
+          <li><%= Thoth::Plugin::TwitterClient.parse_tweet(tweet[:text]) %></li>
         <% end %>
 			</ul>
 		</li>
