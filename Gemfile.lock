@@ -116,7 +116,7 @@ DEPENDENCIES
   passenger
   rails (= 2.3.8)
   ramaze (= 2009.02)
-  rb-readline
+  rb-readline (= 0.5.0)
   rubytree
   sanitize (= 1.2.1)
   sequel
