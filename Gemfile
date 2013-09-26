@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
-source 'http://gems.github.com'
-source 'http://gemcutter.org'
+source "http://rubygems.org"
+source "http://gems.github.com"
+source "http://gemcutter.org"
 
 gem "bundler"
 
@@ -23,17 +23,18 @@ gem "jsmin"
 gem "json_pure"
 gem "mysql", "2.8.1"
 gem "net-flickr"
-gem "nokogiri"
+gem "nokogiri", "1.4.4"
 gem "not-naughty"
 gem "passenger"
 gem "ramaze", "2009.02"
-gem 'rb-readline'
+gem "rb-readline"
 gem "RedCloth"
 gem "rubytree"
-gem "sanitize"
+gem "sanitize", "1.2.1"
 gem "sequel"
 gem "sequel_notnaughty"
 gem "guardian-content",  "~> 0.2.2"#:git => "git://github.com/guardian-openplatform/contentapi-ruby.git"
-gem 'tumblr-api'
-gem 'thin'
+gem "tumblr-api"
+gem "thin"
+gem "twitter", "4.8.1"
 
