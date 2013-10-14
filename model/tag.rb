@@ -44,50 +44,9 @@ module Thoth
       length_of :name, :maximum => 64
     end
 
-    #--
-    # Class Methods
-    #++
-
-    # Gets an array of tag names and post counts for tags with names that begin
-    # with the specified query string.
-    def self.suggest(query, limit = 1000)
-      tags = []
-
-      self.dataset.grep(:name, "#{query}%").all do |tag|
-        tags << [tag.name, tag.posts.count]
-      end
-
-      tags.sort!{|a, b| b[1] <=> a[1]}
-      tags[0, limit]
-    end
-    
-    def self.nav_tags
-      Tag.filter("parent_id is not null").all
-    end
-    
-    #--
-    #  Tree methods
-    #++
-    
-    def self.root
-      self[:name => "all"]
-    end
-    
-    def self.level_1
-      self.root.children
-    end
-    
-    def self.level_2
-      self.level_1.collect{|tag| tag.children}.flatten
-    end 
-    
-    def self.level_3
-      self.level_2.collect{|tag| tag.children}.flatten
-    end       
-    
     def children
       Tag.filter(:parent_id => self.id).order(:position).all
-    end
+    end    
 
     def self_and_descendants
       tags = []
@@ -260,6 +219,66 @@ module Thoth
     # URL for this tag.
     def url
       Config.site.url.chomp('/') + R(TagController, CGI.escape(name))
+    end
+    
+    class << self
+      #--
+      # Class Methods
+      #++
+  
+      # Gets an array of tag names and post counts for tags with names that begin
+      # with the specified query string.
+      def suggest(query, limit = 1000)
+        tags = []
+  
+        self.dataset.grep(:name, "#{query}%").all do |tag|
+          tags << [tag.name, tag.posts.count]
+        end
+  
+        tags.sort!{|a, b| b[1] <=> a[1]}
+        tags[0, limit]
+      end
+      
+      def nav_tags
+        Tag.filter("parent_id is not null").all
+      end
+      
+      #--
+      #  Tree methods
+      #++
+      
+      def root
+        self[:name => "all"]
+      end
+      
+      def level_1
+        self.root.children
+      end
+      
+      def level_2
+        self.level_1.collect{|tag| tag.children}.flatten
+      end 
+      
+      def level_3
+        self.level_2.collect{|tag| tag.children}.flatten
+      end       
+      
+      def popular_tag_ids
+        Tag.left_outer_join(:taggings, :tag_id => :id).group(:tag_id).order("count(*) desc").all.collect{|tag| tag[:tag_id]}.reject{|x| x.blank?}
+      end
+      
+      def popular_tags
+        tag_ids = self.popular_tag_ids
+        tags = Tag.filter("id in (#{tag_ids.join(",")})").order("find_in_set(id, #{tag_ids.join(",")})").all
+      end  
+      
+      #expects params like {"54"=>{"position"=>"1", "parent_id"=>"23"} where the 54 is the id of a tag
+      def update_tags(tag_params)
+        tag_params.each do |tag_id, attributes|
+          ldb "Calling Tag[#{tag_id.inspect}].update(#{attributes.inspect})"
+          Tag[tag_id].update(attributes)
+        end
+      end  
     end
   end
 end

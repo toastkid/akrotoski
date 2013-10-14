@@ -1,0 +1,16 @@
+<li class="tag-li" id="tag-<%= tag.id %>" title="tag-<%= tag.id %>">
+  <div class="tag-info" >
+    <%= tag.name %>
+    <input type="hidden" name="tags[<%= tag.id %>][parent_id]" value="<%= tag.parent_id %>" class="parent-id-field"/>
+    <input type="hidden" name="tags[<%= tag.id %>][position]" value="<%= tag.position %>" class="position-field"/>
+    <input type="text" name="tags[<%= tag.id %>][color]" value="<%= tag.color %>" id="tag-<%= tag.id %>-color" style="font-size: 0px; <%= "background: #{tag.color};" if !tag.color.blank? %>" class="colorpicker-input colorSelector2" />
+  </div>
+  <ol class="tag-ol">
+    <% tag.children.each do |child_tag| %>
+      <%= render_template 'tag_li', :tag => child_tag %>
+    <% end %>
+  </ol>
+</li>
+<% if @all_tags %>
+  <% @all_tags.delete(tag) %>
+<% end %>

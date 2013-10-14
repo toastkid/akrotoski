@@ -74,6 +74,20 @@ module Thoth
       response.delete_cookie('thoth_auth', :path => R(MainController))
       redirect(R(MainController))
     end
+    
+    def edit_homepage
+      require_auth
+      @top_level_tag = Tag[1] 
+      ldb "@top_level_tag = #{@top_level_tag.inspect}"
+      @all_tags = Tag.popular_tags
+    end
+    
+    def update_tags
+      ldb "request[:tags] = #{request[:tags].inspect}"
+      Tag.update_tags(request[:tags])
+      flash[:success] = 'Your changes have been saved.'
+      redirect "/admin/edit_homepage"
+    end
 
   end
 end

@@ -73,11 +73,6 @@ module Thoth
       end
     end
     
-    def admin
-      require_auth
-      @parent_tag = Tag[1] 
-    end    
-
     def atom(name = nil)
       tag = Tag[:name => name.strip.downcase] if name
       
