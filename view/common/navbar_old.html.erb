@@ -1,0 +1,54 @@
+  <% @ancestors = [Thoth::Tag.root] if @ancestors.blank? || @ancestors.size < 2 || @ancestors[1].parent_id.blank? %>
+  
+  <div id="navmain">
+    <% @ancestors.each_with_index do |tag, i| %>
+      <% if i == 0 %>
+        <% "#at top level nav, use hard coded links as there's a lot of custom stuff happening" %>
+        <div id="navmain">
+          <ul class="navmain1"> 
+            <li class="linkhome">
+              <a href="/" class="<%= 'active' if Ramaze::Request.current.request_uri == '/' %>">home</a>
+            </li>      
+            <li class="linkacademic">
+              <a href="/tag/academic" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/academic' %>">academic</a>
+            </li>    
+            <li class="linkmedia">
+              <a href="/tag/media" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/media' %>">media</a>
+            </li>    
+            <li class="linkuttw">
+              <a href="/tag/uttw" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/uttw' %>">uttw</a>
+            </li>    
+            <li class="linkcult-of-me">
+              <a href="/tag/cult-of-me" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/cult-of-me' %>">cult of me</a>
+            </li>  
+            <!--
+            <li class="linkaudio-video">
+              <a href="/audio-video" class="<%= 'active' if Ramaze::Request.current.request_uri == '/audio-video' %>">audio & video</a>
+            </li>
+            -->
+            <li class="linkserendipity-engine">
+              <a href="/tag/serendipity-engine" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/serendipity-engine' %>">serendipity engine</a>
+            </li>   
+                
+            
+            <li class="linklifestream">
+              <a href="/tag/lifestream" class="<%= 'active' if Ramaze::Request.current.request_uri == '/tag/lifestream' %>">lifestream</a>
+            </li>                  
+            <li class="linkcontact">
+              <a href="/contact" class="<%= 'active' if Ramaze::Request.current.request_uri == '/contact' %>">contact</a>
+            </li>                  
+          </ul>    
+        </div>  
+      <% else %>
+        <%# use data-driven (tags.parent_id) system to iterate down %>
+        <% if (children = tag.children).size > 0 %>
+          <ul class="navsub">   
+            <% children.each do |child| %>
+              <%= render_template 'common/navbar_li', :tag => child, :active => @ancestors.include?(child) %>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  

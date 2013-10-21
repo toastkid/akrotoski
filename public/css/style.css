@@ -315,7 +315,7 @@ clear: both;
 }
 
 #navmain li a{
-	padding: 0.2em 10px 0.4em 26px;
+	padding: 0.2em 10px 0.4em 0px;
 	text-decoration: none;
 	float: left;
 	display: block;
@@ -343,6 +343,7 @@ clear: both;
 	background-image: url(../images/site/splashhome.gif);
 }
 
+/*
 #navmain li.linkacademic a{
 	background-image: url(../images/site/splashacademic.gif);
 }
@@ -379,6 +380,7 @@ clear: both;
 #navmain li.linkcontact a{
 	background-image: url(../images/site/splashcontact.gif);
 }
+*/
 
 #navmain .navsub {
 	clear: both;

@@ -1,5 +1,11 @@
-  <% active = false unless defined?(active) %>
+  <% active = defined?(active) && active %>
+  <% parent_color = defined?(parent_color) && parent_color %>
+  <% color = tag.color || parent_color %>
+  <% splash = defined?(splash) && splash %>
   
-  <li class="link<%= tag.name %>">
-    <a href="/tag/<%= tag.name %>" class="<%= 'active' if active %>"><%= tag.title %></a>
+  <li>
+    <% if splash %>
+      <img src="/images/site/splash-mask.png" class="splash" style="float: left; background: <%= color %>"/>
+    <% end %>
+    <a href="<%= tag.url %>" class="<%= 'active' if active %> navlink" style="color:<%= color %>;"><%= tag.title %></a>
   </li>

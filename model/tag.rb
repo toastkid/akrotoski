@@ -113,7 +113,11 @@ module Thoth
     #########################################
     
     def title
-      self[:title] || self.name
+      if self[:title].blank?
+        self.name.gsub(/^homepage\:/,"")
+      else
+        self[:title]
+      end
     end
     
     def to_text(style = "barred", level = nil)
@@ -218,7 +222,15 @@ module Thoth
 
     # URL for this tag.
     def url
-      Config.site.url.chomp('/') + R(TagController, CGI.escape(name))
+      Config.site.url.chomp('/') + self.path
+    end
+    
+    def path
+      if self.name =~ /homepage\:/
+        "/#{CGI.escape(self.name.gsub("homepage:",""))}"
+      else
+         R(TagController, CGI.escape(self.name))
+      end
     end
     
     class << self
@@ -269,7 +281,7 @@ module Thoth
       
       def popular_tags
         tag_ids = self.popular_tag_ids
-        tags = Tag.filter("id in (#{tag_ids.join(",")})").order("find_in_set(id, #{tag_ids.join(",")})").all
+        tags = (Tag.filter("name like 'homepage:%'").all + Tag.filter("id in (#{tag_ids.join(",")})").order("find_in_set(id, #{tag_ids.join(",")})").all).uniq
       end  
       
       #expects params like {"54"=>{"position"=>"1", "parent_id"=>"23"} where the 54 is the id of a tag
