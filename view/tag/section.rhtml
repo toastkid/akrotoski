@@ -1,4 +1,6 @@
-  <% tag = Thoth::Tag[:name => tag_name] %>
+  <% if !defined?(tag) && defined?(tag_name) %>
+    <% tag = Thoth::Tag[:name => tag_name] %>
+  <% end %>
   <% if tag %>
     <div class="col span1 <%= tag.name %> contenttype1">
       <%= render_template "tag/section_contents", :tag => tag %>

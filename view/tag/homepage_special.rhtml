@@ -1,0 +1,29 @@
+<% if tag.name == "homepage:bio" %>
+
+  <%= render_template "common/search_form" %>                      
+  <div class="col span1 bio last autofold" id="bio">
+    <%= render_template "common/bio" %>              
+  </div>
+  
+<% elsif tag.name == "homepage:comments" %>
+
+  <div class="col span1 comments last contenttype1">
+    <p class="sectiontitle"><strong>Comments</strong></p>    
+      <%= render_template('common/recent_comments_homepage') %>   
+  </div>  
+  
+<% elsif tag.name == "homepage:tech-weekly" %>
+
+  <div class="col span1 techweekly">
+    <%= @homepage_bottom_post.body_rendered if @homepage_bottom_post %>
+  </div>
+  
+<% elsif tag.name == "homepage:tweets" %>
+
+  <div class="col span1 twitter last contenttype1">
+    <p class="sectiontitle"><strong>Tweets</strong></p>
+    <%= render_template('common/tweetbox') %>              
+  </div>
+  
+<% end %>
+

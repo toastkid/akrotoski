@@ -49,29 +49,8 @@ module Thoth
         redirect Rs(type), :status => 301
       end
 
-#      @title = Config.site.name
-#      tag_names = ["academic", "media", "ukti", "lifestream"]
-#      @tags = Tag.filter("name in ?", tag_names).all
-#      @posts = []
-#      @tags.each do |tag|
-#        tag_posts = tag.posts.all.sort_by{|post| post.created_at}.reverse
-#        posts = []
-#        while posts.size < 2
-#          post = tag_posts.shift
-#          unless @posts.include?(post)
-#            post.main_tag = tag
-#            posts << post 
-#          end
-#        end
-#        @posts += posts
-#      end
-#      @posts = @posts.sort_by{|post| post.created_at}.reverse
-#      @media_posts = Tag[:name => "media"].posts.limit(3).all
-#      @academic_posts = Tag[:name => "academic"].posts.limit(3).all
-#      @lifestream_posts = Tag[:name => "lifestream"].posts.limit(3).all
-#      @cult_of_me_posts = Tag[:name => "cult-of-me"].posts.limit(3).all      
-#      @homepage_post = Post[:title => "homepage"]
       @homepage_bottom_post = Post[:title => "homepage_bottom"]
+      @tag_rows = Tag.homepage_tag_rows
     end
 
     def atom

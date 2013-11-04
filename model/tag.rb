@@ -172,9 +172,9 @@ module Thoth
     end
     
     def external_posts(options={})
-      ldb "self = #{self.inspect}, options = #{options.inspect}"
+      #ldb "self = #{self.inspect}, options = #{options.inspect}"
       tags = self.self_and_descendants
-      ldb "got tags: #{tags.collect{|t| [t.id, t.name]}.inspect}"
+      #ldb "got tags: #{tags.collect{|t| [t.id, t.name]}.inspect}"
       external_post_ids = ExternalPostTagging.filter([[:tag_id, tags.collect(&:id)]]).select(:external_post_id).collect(&:external_post_id).uniq   
       query = ExternalPost.filter([[:id, external_post_ids]]).reverse_order(:created_at) 
       if options[:page] 
@@ -184,7 +184,7 @@ module Thoth
     end    
     
     def posts_and_external_posts(options={})
-      ldb "self = #{self.inspect}, options = #{options.inspect}"    
+      #ldb "self = #{self.inspect}, options = #{options.inspect}"    
       options[:per_page] ||= 10
       page = options.delete(:page) #can't paginate till we get all of the results
       all = (self.posts(options).all + self.external_posts(options).all).sort_by(&:created_at).reverse
@@ -291,6 +291,19 @@ module Thoth
         tag_ids = self.popular_tag_ids
         tags = (Tag.filter("name like 'homepage:%'").all + Tag.filter("id in (#{tag_ids.join(",")})").order("find_in_set(id, #{tag_ids.join(",")})").all).uniq
       end  
+      
+      def homepage_tag_rows
+        tags = Tag.filter("homepage_position is not null and homepage_position <> ''").all.sort_by(&:homepage_position)
+        rows = []
+        while tags.size > 0
+          row = []
+          3.times do |i| 
+            row << tags.shift if tags.size > 0
+          end
+          rows << row
+        end
+        rows
+      end
       
       #expects params like {"54"=>{"position"=>"1", "parent_id"=>"23"} where the 54 is the id of a tag
       def update_tags(tag_params)
