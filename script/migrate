@@ -5,6 +5,12 @@ end
 latest_version = `mysql -u root -s -N -e "SELECT version FROM akrotoski_development.schema_info"`.chomp.to_i
 available_versions = Dir["./migrate/*.rb"].collect{|file| File.basename(file).scan(/^\d+/).first.to_i}.sort
 required_versions = available_versions.select{|v| v > latest_version}
-required_versions.each do |version|
-  `thoth --migrate #{version} #{"--devel" if @development}`
+if required_versions.size == 0
+  puts "No outstanding migration versions found"
 end
+required_versions.each do |version|
+  cmd = "thoth --migrate #{version} #{"--devel" if @development}"
+  puts "Doing: #{cmd}"
+  `#{cmd}`
+end
+puts "Finished"

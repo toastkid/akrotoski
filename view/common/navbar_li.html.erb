@@ -3,9 +3,9 @@
   <% color = tag.color || parent_color %>
   <% splash = defined?(splash) && splash %>
   
-  <li>
+  <li id="tag-<%= tag.id %>">
     <% if splash %>
       <img src="/images/site/splash-mask.png" class="splash" style="float: left; background: <%= color %>"/>
     <% end %>
-    <a href="<%= tag.url %>" class="<%= 'active' if active %> navlink" style="color:<%= color %>;"><%= tag.title %></a>
+    <a href="<%= tag.url %>" class="<%= 'active' if active %> navlink" style="color:<%= color %>;"><%= tag.display_name %></a>
   </li>

@@ -120,6 +120,14 @@ module Thoth
       end
     end
     
+    def display_name
+      dname = self.name.gsub("-"," ").gsub("homepage:","")
+      if dname.blank?
+        dname = self.title
+      end
+      dname
+    end
+    
     def to_text(style = "barred", level = nil)
       level ||= self.level 
       text = ""
