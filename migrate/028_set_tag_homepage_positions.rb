@@ -40,10 +40,11 @@ class SetUttwTagTitle < Sequel::Migration
       %w(uttw lifestream homepage:tweets),
       %w(homepage:tech-weekly audio-video homepage:comments)
     ]
+    posn = 0
     tag_rows.each_with_index do |row, i|
       row.each_with_index do |tag_name, j|
         tag = Tag.first(:name => tag_name) 
-        tag.homepage_position = "#{i+1}-#{j+1}"
+        tag.homepage_position = posn += 1
         tag.save        
       end
     end

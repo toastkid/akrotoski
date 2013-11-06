@@ -43,7 +43,9 @@ class SetUttwTagTitle < Sequel::Migration
       252 => "#C200FA",
       20 => "#309F41",
       312 => "#999",
-      317 => "#000"
+      317 => "#000",
+      203 => "#6400FA",
+      315 => "#FB901E"
     }
     colors.each do |tag_id, color|
       tag = Tag[tag_id]

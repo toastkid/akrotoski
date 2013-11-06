@@ -2,7 +2,7 @@
     <% tag = Thoth::Tag[:name => tag_name] %>
   <% end %>
   <% if tag %>
-    <div class="col span1 <%= tag.name %> contenttype1">
+    <div class="col span1 <%= tag.css_class %> contenttype1">
       <%= render_template "tag/section_contents", :tag => tag %>
     </div>
   <% end %>

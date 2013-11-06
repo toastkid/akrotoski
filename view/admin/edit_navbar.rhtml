@@ -1,0 +1,113 @@
+<link rel="stylesheet" media="screen" type="text/css" href="/js/colorpicker/css/colorpicker.css" />
+
+<style type="text/css">
+  .tag-tree {
+    font-size: 1.2em;
+  }
+  
+  .tag-tree .tag-li{
+    font-size: 0.95em;
+    margin: 5px 5px 5px 25px;
+    width: 200px;
+  }  
+  
+  .tag-tree .tag-ol{
+    
+  }  
+  
+  .tag-tree .tag-info{
+    padding: 3px;
+    background: #fafaca;
+    border:2px solid #ddd;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  
+    -webkit-border-radius: 5px;   
+  } 
+  
+  #other-tags li {
+    float:left;
+    width: auto;
+    margin: 1px 1px 1px 1px;
+  }    
+  
+  #other-tags li .tag-info {
+    background: #eee;
+    font-size: 0.85em;    
+    padding: 1px 1px 1px 1px;
+  }
+  
+  .tag-tree .tag-li .top-level{
+    width: 100%;
+  }
+  
+  .sortable-placeholder {
+    outline: 1px dashed #aaa;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 30px;
+    width: 200px;
+    margin: 5px 5px 5px 25px;
+  }  
+  
+  .colorpicker-input {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .colorSelector2 {
+    float:right;
+  }  
+</style>
+
+<div class="welcome">
+  <h2>Edit the Navbar</h2>
+  
+  <p>The structure of the navbar (at the top of every page) is now determined by the "tree" of tags on this page.</p>
+  
+  <p>If a tag is indented compared to the one above it, then it means it is a "child" of the one above it, which in turn means that it appears underneath the other tag in the nav.  If it's at the same indentation then it comes after it.  So, the top level of tags are all the ones that are leftmost.</p>
+  
+  <p>You can drag tags from the "NOT USED" section at the bottom into the "NAVBAR TAGS" section at the top to make them part of the navbar.  Drag them left or right to make them at the same level as the one above, or a child of it.  Make sure you hit SAVE when you're done.</p>
+  
+  <p>You can also edit the color of the tags.  This will be most useful when you drag a new tag into the top level: you'll want to give it its own color, so it stands out from the others at the top level.  To change the color, click the little colored box on the right of the tag, then choose a color from the color picker.  The "save" button in the color picker is the little icon at the bottom right of the block box.</p>
+  
+  <p>NOTE: there are some "special" tags, which aren't used to tag posts, but are just used to drive the structure of the site.  These all start with "homepage:".  For example, "homepage:contact" links to the Contact page, which isn't a proper tag as such.  "homepage:" links to the main homepage.  "homepage:tech-weekly" links to the "Tech Weekly" page, etc.  These special "homepage" tags are also used on the page where you manage the contents of the homepage, which you can get to via the cog in the admin menu.</p>
+  
+  <form id="update-tags-form" action="/admin/update_navbar" method="post">
+    
+    <input type="submit" name="Save" style="display:none;" id="update-tags-submit">
+    <input onclick="submitUpdateNavbarEditorForm();" type="button" value="Save" style="padding: 5px;">
+    
+    <ol id="tag-tree" class="tag-tree">
+      <li class="tag-li undraggable navbar-tags" id="tag-<%= @top_level_tag.id %>" title="tag-<%= @top_level_tag.id %>">
+        <div class="tag-info" style="background: #aac; width:650px;">
+          NAVBAR TAGS
+        </div>
+        <ol class="tag-ol">    
+          <% @top_level_tag.children.each do |child_tag| %>
+            <%= render_template 'tag_li', :tag => child_tag, :with_children => true %>
+          <% end %>
+        </ol>
+      </li>
+      <li class="tag-li undraggable" id="other-tags" title="tag-">
+        <div class="tag-info" style="background: #aac; width:650px;">
+          NOT USED
+        </div>
+        <ol class="tag-ol" style="background: #aac; width:630px;">
+          <% @all_tags.each do |tag| %>
+            <li class="tag-li" id="tag-<%= tag.id %>" title="tag-<%= tag.id %>">
+              <div class="tag-info">
+                <%= tag.name %>
+                <input type="hidden" name="tags[<%= tag.id %>][parent_id]" value="" class="parent-id-field"/>
+                <input type="hidden" name="tags[<%= tag.id %>][position]" value="" class="position-field"/>
+              </div>
+              <ol class="tag-ol">
+              </ol>
+            </li>
+          <% end %>        
+        </ol>
+      </li>    
+    </ol>
+  </form>
+  <div style="clear:all;"></div>
+</div>

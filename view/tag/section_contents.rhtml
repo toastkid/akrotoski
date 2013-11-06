@@ -1,5 +1,8 @@
 <% posts = tag.posts_and_external_posts(:per_page => 3, :page => 1) %>
-<p class="sectiontitle"><a href="/tag/<%= tag.name %>" title="see posts in the '<%= tag.title %>' section"><strong>Latest <%= tag.title %></strong></a></p>
+<p class="sectiontitle">
+  <img src="/images/site/splash-mask.png" class="splash" style="float: left; background: <%= tag.display_color %>"/>
+  <a href="/tag/<%= tag.name %>" title="see posts in the '<%= tag.title %>' section"><strong>Latest <%= tag.title %></strong></a>
+</p>
 <% if post = posts.shift %>
   <%= render_template "#{'../' if defined?(subfolder) && subfolder}post/summary", :post => post %>
 <% end %>

@@ -1,4 +1,4 @@
-<div id="post-<%= @post.id || 0 %>" class="post hentry post-compact <%= @post.tags.collect{|tag| tag.name}.join(' ') %>">
+<div id="post-<%= @post.id || 0 %>" class="post hentry post-compact <%= @post.tags.collect{|tag| tag.css_class}.join(' ') %>">
   <div class="hd">
     <h2 class="entry-title">
       <a href="<%== @post.url %>" rel="bookmark"

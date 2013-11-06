@@ -342,6 +342,46 @@ clear: both;
 #navmain li.linkhome a{
 	background-image: url(../images/site/splashhome.gif);
 }
+
+/*
+#navmain li.linkacademic a{
+	background-image: url(../images/site/splashacademic.gif);
+}
+
+#navmain li.linkmedia a{
+	background-image: url(../images/site/splashmedia.gif);
+}
+
+#navmain li.linkukti a{
+	background-image: url(../images/site/splashukti.gif);
+}
+
+#navmain li.linklifestream a{
+	background-image: url(../images/site/splashlifestream.gif);
+}
+
+#navmain li.linkserendipity-engine a{
+	background-image: url(../images/site/splashserendipity-engine.gif);
+}
+
+
+#navmain li.linkuttw a{
+	background-image: url(../images/site/splashuttw.gif);
+}
+
+#navmain li.linkcult-of-me a{
+	background-image: url(../images/site/splashcult-of-me.gif);
+}
+
+#navmain li.linkaudio-video a{
+	background-image: url(../images/site/splashaudio-video.gif);
+}
+
+#navmain li.linkcontact a{
+	background-image: url(../images/site/splashcontact.gif);
+}
+*/
+
 #navmain .navsub {
 	clear: both;
 	margin: 0 0 0.42em 10px;
@@ -483,6 +523,40 @@ clear: both;
   border-style: solid;
 }
 
+/*
+.post.academic{
+	border-top: 1px solid #FA006E;
+}
+
+.post.media{
+	border-top: 1px solid #FB901E;
+}
+
+.post.ukti{
+	border-top: 1px solid #8DC6E2;
+}
+
+.post.lifestream{
+	border-top: 1px solid #2F9E41;
+}
+
+.post.serendipity-engine{
+	border-top: 1px solid #C200FA;
+}
+
+.post.uttw{
+	border-top: 1px solid #ABB31D;
+}
+
+.post.audio-video{
+	border-top: 1px solid #6400FA;
+}
+
+.post.cult-of-me{
+	border-top: 1px solid #34C6C0;
+}
+*/
+
 .post .sectiontitle{
 	margin: 0;
 	clear: both;
@@ -503,6 +577,35 @@ clear: both;
 	top: -1.18em;
 }
 
+.post .academic .sectiontitle a{
+	background-image: url(../images/site/splashacademic.gif);
+}
+
+.post .media .sectiontitle a{
+	background-image: url(../images/site/splashmedia.gif);
+}
+
+.post .ukti .sectiontitle a{
+	background-image: url(../images/site/splashukti.gif);
+}
+
+.post .lifestream .sectiontitle a{
+	background-image: url(../images/site/splashlifestream.gif);
+}
+
+.post .serendipity-engine .sectiontitle a{
+	background-image: url(../images/site/splashserendipity-engine.gif);
+}
+
+.post .uttw .sectiontitle a{
+	background-image: url(../images/site/splashuttw.gif);
+}
+
+.post .audio-video .sectiontitle a{
+	background-image: url(../images/site/splashaudio-video.gif);
+}
+
+
 .post  h2{
 	margin: 0;
 	font-size: 1.49em;
@@ -514,6 +617,85 @@ clear: both;
 #master .linkhome a{
 	color: #999;
 }
+/*
+.post.academic a, 
+#master .linkacademic a, 
+#master.academicwrap .navsub a, 
+#master.academicwrap .sticky a, 
+#home .col.academic h2 a:hover, 
+.col.academic a{
+	color: #FA006E;
+}
+
+
+.post.media a, 
+#master .linkmedia a, 
+#master.mediawrap .navsub a, 
+#master.mediawrap .sticky a, 
+#home .col.media h2 a:hover, 
+.col.media a{
+	color: #FB901E;
+}
+
+.post.cult-of-me a, 
+#master .linkcult-of-me a, 
+#master.cult-of-mewrap .navsub a, 
+#master.cult-of-mewrap .sticky a, 
+#home .col.cult-of-me h2 a:hover, 
+.col.cult-of-me a{
+	color: #34C6C0;
+}
+
+.post.lifestream a, 
+#master .linklifestream a, 
+#master.lifestreamwrap .navsub a, 
+#master.lifestreamwrap .sticky a, 
+#home .col.lifestream h2 a:hover, 
+.col.lifestream a{
+	color: #309F41;
+}
+
+.post.serendipity-engine a, 
+#master .linkserendipity-engine a, 
+#master.serendipity-enginewrap .navsub a, 
+#master.serendipity-enginewrap .sticky a, 
+#home .col.serendipity-engine h2 a:hover, 
+.col.serendipity-engine a{
+	color: #C200FA;
+}
+
+.post.uttw a, 
+#master .linkuttw a, 
+#master.uttwwrap .navsub a, 
+#master.uttwwrap .sticky a, 
+#home .col.uttw h2 a:hover, 
+.col.uttw a{
+	color: #ABB31D;
+}
+
+.post.ukti a, 
+#master .linkukti a, 
+#master.uktiwrap .navsub a, 
+#master.uktiwrap .sticky a{
+	color: #8CC5E2;
+}
+
+.post.audio-video a, 
+#master .linkaudio-video a, 
+#master.audio-videowrap .navsub a, 
+#master.audio-videowrap .sticky a
+#home .col.audio-video h2 a:hover, 
+.col.audio-video a{
+	color: #6400FA;
+}
+
+.post.cult-of-me a, 
+#master .linkcult-of-me a, 
+#master.cult-of-mewrap .navsub a, 
+#master.cult-of-mewrap .sticky a{
+	color: #34C6C0;
+}
+*/
 
 #master .post h2 a, #master .post h1 a{
 	color: #333 !important;
@@ -858,7 +1040,7 @@ border: 1px solid #aaa;
 
 #home .col{
 	float: left;
-	margin: 0 20px 10px 0;
+	margin: 0 40px 10px 0;
 }
 
 #home .col.last{
@@ -1018,6 +1200,59 @@ border: 1px solid #aaa;
 	display: block;
 }
 
+/*
+#home .col.media{
+	border-color: #FB901E;
+}
+#home .col.academic{
+	border-color: #FA006E;
+}
+#home .col.cult-of-me{
+	border-color: #34C6C0;
+}
+#home .col.lifestream{
+	border-color: #309F41;
+}
+#home .col.serendipity-engine{
+	border-color: #C200FA;
+}
+#home .col.uttw{
+	border-color: #ABB31D;
+}
+#home .col.audio-video{
+	border-color: #6400FA;
+}
+
+#home .col.media .sectiontitle a{
+	color: #FB901E;
+	background-image: url(../images/site/splashmedia.gif);
+}
+#home .col.academic .sectiontitle a{
+	color: #FA006E;
+	background-image: url(../images/site/splashacademic.gif);
+}
+#home .col.cult-of-me .sectiontitle a{
+	color: #34C6C0;
+	background-image: url(../images/site/splashcult-of-me.gif);
+}
+#home .col.lifestream .sectiontitle a{
+	color: #309F41;
+	background-image: url(../images/site/splashlifestream.gif);
+}
+#home .col.serendipity-engine .sectiontitle a{
+	color: #C200FA;
+	background-image: url(../images/site/splashserendipity-engine.gif);
+}
+#home .col.uttw .sectiontitle a{
+	color: #ABB31D;
+	background-image: url(../images/site/splashuttw.gif);
+}
+#home .col.audio-video .sectiontitle a{
+	color: #6400FA;
+	background-image: url(../images/site/splashaudio-video.gif);
+}
+*/
+
 #home .col.comments .sectiontitle strong{
 	background-image: url(../images/icons/comments.gif);
 	padding-left: 24px;
@@ -1025,6 +1260,31 @@ border: 1px solid #aaa;
 #home .col.twitter .sectiontitle strong{
 	background-image: url(../images/icons/twitter.gif);
 }
+
+/*
+#home #content .col.media .but a{
+	background: #FB901E;
+}
+#home #content .col.academic .but a{
+	background: #FA006E;
+}
+#home #content .col.cult-of-me .but a{
+	background: #34C6C0;
+}
+#home #content .col.lifestream .but a{
+	background: #309F41;
+}
+#home #content .col.serendipity-engine .but a{
+	background: #C200FA;
+}
+#home #content .col.uttw .but a{
+	background: #ABB31D;
+}
+#home #content .col.audio-video .but a{
+	background: #6400FA;
+}
+*/
+
 
 #home .col.contenttype1 h2{
 	font-size: 1.32em;
@@ -1065,7 +1325,9 @@ border: 1px solid #aaa;
 .col.techweekly{
 	border-width: 3px 0;
 	border-style: solid;
+/*
 	border-color: #FB901E;
+*/
 	padding: 1.44em 0;
 }
 

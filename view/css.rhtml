@@ -7,3 +7,32 @@
 <% Thoth::Config.theme.css.each do |url| %>
   <link rel="stylesheet" type="text/css" href="<%== url %>" />
 <% end %>
+
+<!-- generate dynamic styles based on tag colors -->
+<style type="text/css">
+  <% Thoth::Tag.colored_tags.each do |tag| %>
+    .post.<%= tag.css_class %>{
+      border-top: 1px solid <%= tag.color %>;
+    }  
+    
+    .post.<%= tag.css_class %> a, 
+    #master .link<%= tag.css_class %> a, 
+    #master.<%= tag.css_class %>wrap .navsub a, 
+    #master.<%= tag.css_class %>wrap .sticky a, 
+    #home .col.<%= tag.css_class %> h2 a:hover, 
+    .col.<%= tag.css_class %> a{
+      color: <%= tag.color %>;
+    }    
+      
+    #home .col.<%= tag.css_class %>{
+      border-color: <%= tag.color %>;
+    }  
+    #home .col.<%= tag.css_class %> .sectiontitle a{
+      color: <%= tag.color %>;
+    }    
+    #home #content .col.<%= tag.css_class %>  .but a{
+      background: <%= tag.color %>;
+    }    
+    
+  <% end %>
+</style>

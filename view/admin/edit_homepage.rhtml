@@ -1,54 +1,40 @@
 <link rel="stylesheet" media="screen" type="text/css" href="/js/colorpicker/css/colorpicker.css" />
 
 <style type="text/css">
-  .tag-tree {
-    font-size: 1.2em;
-  }
-  
-  .tag-tree .tag-li{
-    font-size: 0.95em;
-    margin: 5px 5px 5px 25px;
-    width: 200px;
-  }  
-  
-  .tag-tree .tag-ol{
-    
-  }  
-  
-  .tag-tree .tag-info{
-    padding: 3px;
-    background: #fafaca;
-    border:2px solid #ddd;
-    border-radius: 5px;
-    -moz-border-radius: 5px;  
-    -webkit-border-radius: 5px;   
-  } 
-  
-  #other-tags li {
-    float:left;
-    width: auto;
-    margin: 1px 1px 1px 1px;
-  }    
-  
-  #other-tags li .tag-info {
-    background: #eee;
-    font-size: 0.85em;    
-    padding: 1px 1px 1px 1px;
-  }
-  
-  .tag-tree .tag-li .top-level{
-    width: 100%;
-  }
-  
-  .sortable-placeholder {
-    outline: 1px dashed #aaa;
+  .tag-list {
+    width: 500px;
+    margin: 5px;
+    padding: 5px;
+    border: 2px dashed #ddd;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    margin: 5px 5px 5px 25px;
+    border-radius: 3px;    
+  }
+  
+  #homepage-tags {
+    width: 500px;
+  }
+  
+  #other-tags {
+    width: 95%;
   }  
+  
+  .tag-li, .sortable-placeholder {
+    width: 150px;
+    height: 50px;
+    background: #fafaca;
+    float:left;
+    margin: 2px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  
+    -webkit-border-radius: 5px;      
+  }
+  
+  .tag-li .tag-info {
+    font-weight: bold;
+    padding: 3px;
+  }
   
   .colorpicker-input {
     width: 15px;
@@ -57,49 +43,39 @@
   
   .colorSelector2 {
     float:right;
-  }  
+  }    
+  
+  .sortable-placeholder {
+    background: #eee !important;
+    border: none;
+  }    
 </style>
 
 <div class="welcome">
-  <h2>Homepage editor</h2>
+  <h2>Edit the Homepage</h2>
   
-  <h3>Tag tree - determines the structure of the links at the top of the page</h3>
-  <p>The nested list on this page now determines the structure of the links in the navbar.  If a tag is indented compared to the one above it, then it means it is a child of the one above it.  If it's at the same indentation then it comes after it.  You can drag tags from the "NOT USED" section at the bottom into the "NAVBAR TAGS" section at the top to make them part of the navbar.  Make sure you hit SAVE when you're done.</p>
-  <form id="update-tags-form" action="/admin/update_tags" method="post">
+  <p></p>
+  <form id="update-tags-form" action="/admin/update_homepage" method="post">
     
     <input type="submit" name="Save" style="display:none;" id="update-tags-submit">
-    <input onclick="submitUpdateTagsForm();" type="button" value="Save" style="padding: 5px;">
+    <input onclick="submitUpdateHomepageEditorForm();" type="button" value="Save" style="padding: 5px;">
     
-    <ol id="tag-tree" class="tag-tree">
-      <li class="tag-li undraggable navbar-tags" id="tag-<%= @top_level_tag.id %>" title="tag-<%= @top_level_tag.id %>">
-        <div class="tag-info" style="background: #aac; width:650px;">
-          NAVBAR TAGS
-        </div>
-        <ol class="tag-ol">    
-          <% @top_level_tag.children.each do |child_tag| %>
-            <%= render_template 'tag_li', :tag => child_tag %>
-          <% end %>
-        </ol>
-      </li>
-      <li class="tag-li undraggable" id="other-tags" title="tag-">
-        <div class="tag-info" style="background: #aac; width:650px;">
-          NOT USED
-        </div>
-        <ol class="tag-ol" style="background: #aac; width:630px;">
-          <% @all_tags.each do |tag| %>
-            <li class="tag-li" id="tag-<%= tag.id %>" title="tag-<%= tag.id %>">
-              <div class="tag-info">
-                <%= tag.name %>
-                <input type="hidden" name="tags[<%= tag.id %>][parent_id]" value="" class="parent-id-field"/>
-                <input type="hidden" name="tags[<%= tag.id %>][position]" value="" class="position-field"/>
-              </div>
-              <ol class="tag-ol">
-              </ol>
-            </li>
-          <% end %>        
-        </ol>
-      </li>    
+    <h3>Homepage Section</h3>
+    <ol id="homepage-tags" class="tag-list">
+      <% @homepage_tags.each do |tag| %>
+        <%= render_template 'tag_li', :tag => tag %>
+      <% end %>
+      <li style="clear:left;"></li>
     </ol>
+    
+    <h3>Other tags</h3>
+    <ol id="other-tags" class="tag-list">
+      <% @other_tags.each do |tag| %>
+        <%= render_template 'tag_li', :tag => tag %>
+      <% end %>  
+      <li style="clear:left;"></li>      
+    </ol>
+    
   </form>
   <div style="clear:all;"></div>
 </div>

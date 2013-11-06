@@ -227,10 +227,17 @@ module Thoth
       self.drafts.filter("name like ?", "%contact-text").first
     end
     
+    def display_color
+      self.color || Tag.default_color
+    end
 
     # URL for this tag.
     def url
       Config.site.url.chomp('/') + self.path
+    end
+    
+    def css_class
+      "tag-#{self.id}"
     end
     
     def path
@@ -293,7 +300,7 @@ module Thoth
       end  
       
       def homepage_tag_rows
-        tags = Tag.filter("homepage_position is not null and homepage_position <> ''").all.sort_by(&:homepage_position)
+        tags = self.homepage_tags
         rows = []
         while tags.size > 0
           row = []
@@ -305,13 +312,26 @@ module Thoth
         rows
       end
       
+      def homepage_tags
+        tags = Tag.filter("homepage_position is not null and homepage_position <> ''").all.sort_by(&:homepage_position)
+      end
+      
       #expects params like {"54"=>{"position"=>"1", "parent_id"=>"23"} where the 54 is the id of a tag
       def update_tags(tag_params)
+        ldb "tag_params = #{tag_params.inspect}"
         tag_params.each do |tag_id, attributes|
           ldb "Calling Tag[#{tag_id.inspect}].update(#{attributes.inspect})"
           Tag[tag_id].update(attributes)
         end
       end  
+      
+      def colored_tags
+        Tag.filter("color is not null and color <> ''").all
+      end
+      
+      def default_color
+        "#222;"
+      end
     end
   end
 end

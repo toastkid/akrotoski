@@ -1,9 +1,10 @@
-  <% @ancestors = [Thoth::Tag.root] if @ancestors.blank? || @ancestors.size < 2 || @ancestors[1].parent_id.blank? %>
+  <% ldb "@ancestors = #{@ancestors.inspect}" %>  
+  <% @ancestors = [Thoth::Tag.root, Thoth::Tag.filter(:name => "homepage:").first] if @ancestors.blank? || @ancestors.size < 2 || @ancestors[1].parent_id.blank? %>
   <% ldb "@ancestors = #{@ancestors.inspect}" %>
   <div id="navmain">
     <ul class="navmain1"> 
       <% @ancestors[0].children.each do |tag| %>
-        <%= render_template 'common/navbar_li', :tag => tag, :active => @ancestors.include?(tag), :splash => true %>
+        <%= render_template 'common/navbar_li', :tag => tag, :active => @ancestors.include?(tag), :splash => true, :parent_color => @ancestors[0].color %>
       <% end %>                  
     </ul>    
     <% @ancestors[1..-1].each do |ancestor| %>
@@ -11,7 +12,7 @@
       <% if children.size > 0 %>
         <ul class="navsub">   
           <% children.each do |tag| %>
-            <%= render_template 'common/navbar_li', :tag => tag, :active => @ancestors.include?(tag) %>
+            <%= render_template 'common/navbar_li', :tag => tag, :active => @ancestors.include?(tag), :parent_color => ancestor.color %>
           <% end %>
         </ul>       
       <% end %>

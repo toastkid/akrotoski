@@ -22,7 +22,7 @@
 .adminicon.post-edit      { background-position: -16px 0;  }
 .adminicon.post-list      { background-position: -48px 0;  }
 
-.adminicon.edit-homepage  { 
+.adminicon.site-admin  { 
   background: url(../images/gear.png) no-repeat; 
   background-position: -2px -2px;
 }

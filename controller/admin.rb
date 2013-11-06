@@ -75,19 +75,35 @@ module Thoth
       redirect(R(MainController))
     end
     
+    def site_admin
+    
+    end
+    
     def edit_homepage
       require_auth
+      @homepage_tags = Tag.homepage_tags
+      @other_tags = Tag.popular_tags - @homepage_tags 
+    end
+    
+    def edit_navbar
+      require_auth
       @top_level_tag = Tag[1] 
-      ldb "@top_level_tag = #{@top_level_tag.inspect}"
       @all_tags = Tag.popular_tags
     end
     
-    def update_tags
+    def update_navbar
+      ldb "request[:tags] = #{request[:tags].inspect}"
+      Tag.update_tags(request[:tags])
+      flash[:success] = 'Your changes have been saved.'
+      redirect "/admin/edit_navbar"
+    end
+    
+    def update_homepage
       ldb "request[:tags] = #{request[:tags].inspect}"
       Tag.update_tags(request[:tags])
       flash[:success] = 'Your changes have been saved.'
       redirect "/admin/edit_homepage"
-    end
+    end    
 
   end
 end

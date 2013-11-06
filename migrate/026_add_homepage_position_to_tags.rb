@@ -35,7 +35,7 @@ class AddHomepagePositionToTags < Sequel::Migration
   class Tag < Sequel::Model;end
   
   def up
-    add_column(:tags, :homepage_position, :varchar)
+    add_column(:tags, :homepage_position, :integer)
   end      
   
   def down

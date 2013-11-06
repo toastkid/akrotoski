@@ -1,12 +1,46 @@
 $(document).ready(function(){
   //apply autofold
   $(".autofold").each(function(i){ autoFold(this)});
-  if($('#tag-tree').size() > 0){
+  
+  if($('#homepage-tags').size() > 0){
     initHomepageEditor();
+  }    
+  
+  if($('#tag-tree').size() > 0){
+    initNavbarEditor();
   }
 });
 
 function initHomepageEditor(){
+  var options = {
+    placeholder: "sortable-placeholder",   
+    connectWith: ".tag-list"
+  }
+  $("#homepage-tags").sortable(options);
+  $("#other-tags").sortable(options);
+  
+  $('.colorpicker-input').ColorPicker({
+    onSubmit: function(hsb, hex, rgb, el) {
+      var newColor = ("#"+hex);
+      $(el).val(newColor);
+      $(el).css("background",newColor);
+      $(el).ColorPickerHide();
+    }
+  });  
+}
+
+function submitUpdateHomepageEditorForm(){
+  //set homepage_position to "" in all the tags in the other-tags list
+  $("#other-tags").find(".homepage-position-field").val('');
+  //set homepage_position in all the tags in the homepage-tags list
+  $("#homepage-tags .tag-li").each(function(i,childLi){
+    childLi = $(childLi);
+    childLi.find(".homepage-position-field").eq(0).val(i + 1);
+  });
+  $("#update-tags-submit").click();  
+}
+
+function initNavbarEditor(){
   $('#tag-tree').nestedSortable({
     handle: 'div',
     items: "li:not(.undraggable)",
@@ -16,7 +50,6 @@ function initHomepageEditor(){
   $('.colorpicker-input').ColorPicker({
     onSubmit: function(hsb, hex, rgb, el) {
       var newColor = ("#"+hex);
-      console.log("newColor = "+newColor+", $(el).attr('class') = "+$(el).attr('class'));
       $(el).val(newColor);
       $(el).css("background",newColor);
       $(el).ColorPickerHide();
@@ -24,7 +57,7 @@ function initHomepageEditor(){
   });
 }
 
-function submitUpdateTagsForm(){
+function submitUpdateNavbarEditorForm(){
   //set parent_id to "" in all the tags in the NOT USED list
   $("#other-tags").find(".parent-id-field, .position-field").val('');
   //set parent id and position in all the tags in the NAVBAR list
