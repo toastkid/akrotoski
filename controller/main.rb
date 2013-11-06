@@ -51,6 +51,7 @@ module Thoth
 
       @homepage_bottom_post = Post[:title => "homepage_bottom"]
       @tag_rows = Tag.homepage_tag_rows
+      @ancestors = [Tag.root, Tag.filter(:name => "homepage:").first] 
     end
 
     def atom

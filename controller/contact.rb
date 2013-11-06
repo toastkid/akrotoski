@@ -44,6 +44,7 @@ module Thoth
     def index
       @title = "Academic, Media, UKTI & Personal &mdash; Contact Details"
       @colsandcontent_class = "contact"
+      @ancestors = [Tag.root, Tag.filter(:name => "homepage:contact").first]
     end
 
   end
