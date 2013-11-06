@@ -54,7 +54,12 @@
 <div class="welcome">
   <h2>Edit the Homepage</h2>
   
-  <p></p>
+  <p>The contents of the Homepage Section, below, now drive what appears on the homepage.  You can now add as many elements as you want, and rearrange them however you want.  So, say, for example, you wanted "serendipity-engine" as a section on the homepage, as well as being in the navbar, find its box in the lower list and drag it up into the Homepage Section at the top.  Then save.  It will now be on the homepage!</p>
+  
+  <p>NOTE: there are some "special" tags, which aren't used to tag posts, but are just used to drive the structure of the site.  These all start with "homepage:".  For example, "homepage:bio" represents the little bio section, currently in the top right, which isn't a tag as such.   "homepage:tech-weekly" represents the "Tech Weekly" section, "homepage:twitter" is the 'recent tweets' section, etc.  These special "homepage" tags are also used on the page where you manage the contents of the homepage, which you can get to via the cog in the admin menu.</p>
+  
+  <p>Like on the navbar editor, you can change the color of the tags/sections here.</p>
+    
   <form id="update-tags-form" action="/admin/update_homepage" method="post">
     
     <input type="submit" name="Save" style="display:none;" id="update-tags-submit">
