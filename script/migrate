@@ -2,7 +2,7 @@
 if `pwd`.include?("/home/max")
   @development = true
 end
-latest_version = `mysql -u root -s -N -e "SELECT version FROM akrotoski_development.schema_info"`.chomp.to_i
+latest_version = `mysql -u root -s -N -e "SELECT version FROM akrotoski_#{@development ? "development" : "production"}.schema_info"`.chomp.to_i
 available_versions = Dir["./migrate/*.rb"].collect{|file| File.basename(file).scan(/^\d+/).first.to_i}.sort
 required_versions = available_versions.select{|v| v > latest_version}
 if required_versions.size == 0
