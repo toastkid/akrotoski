@@ -49,7 +49,10 @@ module Thoth
 
       if request.post? && Config.site.enable_comments
         # Dump the request if the robot traps were triggered.
-        error_404 unless request['captcha'].empty? && request['comment'].empty?
+        #NOTE: in a desperate attempt to beat the spambots, request['captcha'] is now the actual comment body, 
+        #and request["body"] is now the honeytrap
+        if !request['body'].empty? || Comment.filter(["ip = ? and created_at > ?", request.ip, 5.seconds.ago])
+          error_404 
         
         ldb "making a new comment"
         # Create a new comment.
@@ -60,7 +63,7 @@ module Thoth
           c.author_email = request[:author_email]
           c.author_url   = request[:author_url]
 #          c.title        = request[:title]
-          c.body         = request[:body]
+          c.body         = request[:captcha]
           c.ip           = request.ip
         end
         ldb "comment.id = #{comment.id.inspect}"

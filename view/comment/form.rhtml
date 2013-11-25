@@ -46,23 +46,18 @@
     <% if @comment; @comment.errors.on(:title).each do |error| %>
       <div class="flash error"><%== error %></div>
     <% end; end %>
-
+    <%# "IMPORTANT!!! captcha and body are swapped around now to try to fool the spambots:  'captcha' is the real comment body and 'comment-body' is the honeytrap" %>
     <p>
-      <textarea name="body" rows="6" cols="60"><%== @comment && @comment.body ? @comment.body : '' %></textarea>
+      <textarea name="captcha" rows="6" cols="60"><%== @comment && @comment.body ? @comment.body : '' %></textarea>
     </p>
+    
+    <p class="comment-body-container">
+      <textarea id="comment-body" name="body" cols="60" rows="1"></textarea>
+    </p>    
 
     <% if @comment; @comment.errors.on(:body).each do |error| %>
       <div class="flash error"><%== error %></div>
     <% end; end %>
-
-    <p class="noseeum">
-      Don't type anything here unless you're an evil robot:<br />
-      <input type="text" id="captcha" name="captcha" maxlength="50" />
-
-      <br /><br />
-      And especially don't type anything here:<br />
-      <textarea name="comment" rows="6" cols="60"></textarea>
-    </p>
 
     <% if @comment_error %>
       <div class="flash error"><%== @comment_error %></div>
@@ -80,8 +75,8 @@
       
     </p>
     
-    <p class="tip">Comments are now filtered with <a href="http://http://akismet.com/">Akismet<a/>.  This is an automatic process and doesn't personally involve Aleks Krotoski in any way.  In other words, it's nothing personal.  Basic XHTML (including links) is allowed, just don't try anything fishy.
-      Your comment will be auto-formatted unless you use your own <code>&lt;p&gt;</code> tags for formatting. You're also welcome to use <a href="http://redcloth.org/textile" target="_blank">Textile</a>.</p>
+    <p class="tip">Comments are now filtered with <a href="http://http://akismet.com/">Akismet</a>.  This is an automatic process and doesn't personally involve Aleks Krotoski in any way.  In other words, it's nothing personal.  Basic XHTML (including links) is allowed, just don't try anything fishy.  Also, please leave at least five seconds between posting comments, or you'll trigger the spambot alarm.</p>
+    <p>Your comment will be auto-formatted unless you use your own <code>&lt;p&gt;</code> tags for formatting. You're also welcome to use <a href="http://redcloth.org/textile" target="_blank">Textile</a>.</p>
     
   </fieldset>
 </form>
