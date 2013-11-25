@@ -88,13 +88,19 @@ module Thoth
     
     #returns true for spam, false for not spam    
     def is_spam?
-      old = self.reported_as_spam          
-      self.reported_as_spam = Thoth::Plugin::ThothAkismet.new_client.check self.ip || "", 'user_agent', self.akismet_options   
-      if self.reported_as_spam != old || !self.spam_checked
-        self.spam_checked = true
-        self.save if self.id #only save the comment if it's already been saved
+      #if we've got another comment marked as spam from this ip address, then spam it instantly
+      if Comment.filter(["ip = ? and reported_as_spam = ?", self.ip, true]).first
+        self.reported_as_spam = true
+        return true
+      else
+        old = self.reported_as_spam          
+        self.reported_as_spam = Thoth::Plugin::ThothAkismet.new_client.check self.ip || "", 'user_agent', self.akismet_options   
+        if self.reported_as_spam != old || !self.spam_checked
+          self.spam_checked = true
+          self.save if self.id #only save the comment if it's already been saved
+        end
+        return self.reported_as_spam
       end
-      self.reported_as_spam
     end    
     
     def report_spam
@@ -183,6 +189,10 @@ module Thoth
       end
       ldb "Tested #{comments.size} comments, marked #{comments.select(&:reported_as_spam).size} as spammy and #{comments.reject(&:reported_as_spam).size} as not spammy"   
       comments 
+    end
+    
+    def self.ip_is_spammy?(ip)
+      !!Comment.filter("ip = ? and reported_as_spam = ?", ip, true).first
     end
     
     def similar_comments(*fields)

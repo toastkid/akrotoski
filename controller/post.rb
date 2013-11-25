@@ -51,8 +51,9 @@ module Thoth
         # Dump the request if the robot traps were triggered.
         #NOTE: in a desperate attempt to beat the spambots, request['captcha'] is now the actual comment body, 
         #and request["body"] is now the honeytrap
-        if !request['body'].empty? || Comment.filter(["ip = ? and created_at > ?", request.ip, 5.seconds.ago])
+        if !request['body'].empty? || Comment.filter(["ip = ? and created_at > ?", request.ip, 5.seconds.ago]).first
           error_404 
+        end
         
         ldb "making a new comment"
         # Create a new comment.
@@ -125,8 +126,12 @@ module Thoth
       end
 
       @title = @post.title
-
-      if Config.site.enable_comments
+      
+      #block the comment form if the request ip is in the spam list
+      ldb "request.ip = #{request.ip.inspect}"
+      if Comment.ip_is_spammy?(request.ip)
+        @comments_disabled_message = "Sorry, comments are disabled for you because we've had spammy comments from your ip address."
+      elsif Config.site.enable_comments
         @comment_action = Rs(@post.name) + '#post-comment'
 
         @feeds = [{

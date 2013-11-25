@@ -1,82 +1,86 @@
-<form id="post-comment" class="robots-nocontent" method="post"
-    action="<%== @form_action %>">
-
-  <% if @comment && @comment.valid? %>
-    <fieldset>
-      <%= render_template('../comment/comment.rhtml') %>
-    </fieldset>
-  <% end %>
-
-  <fieldset>
-    <legend>New comment</legend>
-
-    <p>
-      <label for="author">Name</label>
-      <input type="text" name="author" id="author" maxlength="32"
-          title="Enter your name" value="<%== @author %>" />
-    </p>
-
-    <% if @comment; @comment.errors.on(:author).each do |error| %>
-      <div class="flash error"><%== error %></div>
-    <% end; end %>
-
-    <p>
-      <label for="author_email">Email</label>
-      <input type="text" name="author_email" id="author_email" maxlength="255"
-          title="Enter your email address" value="<%== @author_email %>" />
-      <span class="tip">required, won't be displayed</span>
-    </p>
-
-    <% if @comment; @comment.errors.on(:author_email).each do |error| %>
-      <div class="flash error"><%== error %></div>
-    <% end; end %>
-
-    <p>
-      <label for="author_url">Website</label>
-      <input type="text" name="author_url" id="author_url" maxlength="255"
-          title="Enter the URL of your website (optional)"
-          value="<%== @author_url %>" />
-      <span class="tip">optional</span>
-    </p>
-
-    <% if @comment; @comment.errors.on(:author_url).each do |error| %>
-      <div class="flash error"><%== error %></div>
-    <% end; end %>
-
-    <% if @comment; @comment.errors.on(:title).each do |error| %>
-      <div class="flash error"><%== error %></div>
-    <% end; end %>
-    <%# "IMPORTANT!!! captcha and body are swapped around now to try to fool the spambots:  'captcha' is the real comment body and 'comment-body' is the honeytrap" %>
-    <p>
-      <textarea name="captcha" rows="6" cols="60"><%== @comment && @comment.body ? @comment.body : '' %></textarea>
-    </p>
-    
-    <p class="comment-body-container">
-      <textarea id="comment-body" name="body" cols="60" rows="1"></textarea>
-    </p>    
-
-    <% if @comment; @comment.errors.on(:body).each do |error| %>
-      <div class="flash error"><%== error %></div>
-    <% end; end %>
-
-    <% if @comment_error %>
-      <div class="flash error"><%== @comment_error %></div>
+<% if @comments_disabled_message %>
+  <p><%= @comments_disabled_message %></p>
+<% else %>
+  <form id="post-comment" class="robots-nocontent" method="post"
+      action="<%== @form_action %>">
+  
+    <% if @comment && @comment.valid? %>
+      <fieldset>
+        <%= render_template('../comment/comment.rhtml') %>
+      </fieldset>
     <% end %>
-
-    <p>
-      <input type="submit" name="action" value="Preview Comment" />
-      <input type="submit" name="action" value="Post Comment" />
-      <input type="hidden" name="post_id" value="<%== @post.id %>" />
-      <input type="hidden" name="comment_id"
-          value="<%== @comment && @comment.id ? @comment.id : '' %>" />
-    </p>
-
-    <p class="tip">
+  
+    <fieldset>
+      <legend>New comment</legend>
+  
+      <p>
+        <label for="author">Name</label>
+        <input type="text" name="author" id="author" maxlength="32"
+            title="Enter your name" value="<%== @author %>" />
+      </p>
+  
+      <% if @comment; @comment.errors.on(:author).each do |error| %>
+        <div class="flash error"><%== error %></div>
+      <% end; end %>
+  
+      <p>
+        <label for="author_email">Email</label>
+        <input type="text" name="author_email" id="author_email" maxlength="255"
+            title="Enter your email address" value="<%== @author_email %>" />
+        <span class="tip">required, won't be displayed</span>
+      </p>
+  
+      <% if @comment; @comment.errors.on(:author_email).each do |error| %>
+        <div class="flash error"><%== error %></div>
+      <% end; end %>
+  
+      <p>
+        <label for="author_url">Website</label>
+        <input type="text" name="author_url" id="author_url" maxlength="255"
+            title="Enter the URL of your website (optional)"
+            value="<%== @author_url %>" />
+        <span class="tip">optional</span>
+      </p>
+  
+      <% if @comment; @comment.errors.on(:author_url).each do |error| %>
+        <div class="flash error"><%== error %></div>
+      <% end; end %>
+  
+      <% if @comment; @comment.errors.on(:title).each do |error| %>
+        <div class="flash error"><%== error %></div>
+      <% end; end %>
+      <%# "IMPORTANT!!! captcha and body are swapped around now to try to fool the spambots:  'captcha' is the real comment body and 'comment-body' is the honeytrap" %>
+      <p>
+        <textarea name="captcha" rows="6" cols="60"><%== @comment && @comment.body ? @comment.body : '' %></textarea>
+      </p>
       
-    </p>
-    
-    <p class="tip">Comments are now filtered with <a href="http://http://akismet.com/">Akismet</a>.  This is an automatic process and doesn't personally involve Aleks Krotoski in any way.  In other words, it's nothing personal.  Basic XHTML (including links) is allowed, just don't try anything fishy.  Also, please leave at least five seconds between posting comments, or you'll trigger the spambot alarm.</p>
-    <p>Your comment will be auto-formatted unless you use your own <code>&lt;p&gt;</code> tags for formatting. You're also welcome to use <a href="http://redcloth.org/textile" target="_blank">Textile</a>.</p>
-    
-  </fieldset>
-</form>
+      <p class="comment-body-container">
+        <textarea id="comment-body" name="body" cols="60" rows="1"></textarea>
+      </p>    
+  
+      <% if @comment; @comment.errors.on(:body).each do |error| %>
+        <div class="flash error"><%== error %></div>
+      <% end; end %>
+  
+      <% if @comment_error %>
+        <div class="flash error"><%== @comment_error %></div>
+      <% end %>
+  
+      <p>
+        <input type="submit" name="action" value="Preview Comment" />
+        <input type="submit" name="action" value="Post Comment" />
+        <input type="hidden" name="post_id" value="<%== @post.id %>" />
+        <input type="hidden" name="comment_id"
+            value="<%== @comment && @comment.id ? @comment.id : '' %>" />
+      </p>
+  
+      <p class="tip">
+        
+      </p>
+      
+      <p class="tip">Comments are now filtered with <a href="http://http://akismet.com/">Akismet</a>.  This is an automatic process and doesn't personally involve Aleks Krotoski in any way.  In other words, it's nothing personal.  Basic XHTML (including links) is allowed, just don't try anything fishy.  Also, please leave at least five seconds between posting comments, or you'll trigger the spambot alarm.</p>
+      <p>Your comment will be auto-formatted unless you use your own <code>&lt;p&gt;</code> tags for formatting. You're also welcome to use <a href="http://redcloth.org/textile" target="_blank">Textile</a>.</p>
+      
+    </fieldset>
+  </form>
+<% end %>
