@@ -265,7 +265,7 @@ module Thoth
     def gravatar_url
       return @gravatar_url if @gravatar_url
 
-      md5     = Digest::MD5.hexdigest((author_email || author).downcase)
+      md5     = Digest::MD5.hexdigest((author_email || author).to_s.downcase)
       default = CGI.escape(Config.theme.gravatar.default)
       rating  = Config.theme.gravatar.rating
       size    = Config.theme.gravatar.size
